@@ -17,3 +17,124 @@ https://www.tiktok.com/@hollyjobrooks/video/7649363884893130006
 https://www.tiktok.com/@marianna_voulgari/video/7649353688573660419
 
 https://www.tiktok.com/@thess.travellers/video/7668739459524906262
+
+
+
+start
+
+Python_Full_Course_for_Beginners.md
+
+
+
+
+
+Python Interpreter
+
+
+https://www.youtube.com/watch?v=K5KVEU3aaeQ
+
+### Installing Python
+
+Add python.exe to PATH
+
+python --version
+
+### Python Extension
+
+Κάνεις install το Python, και αυτό κάνει install και τα Pylance.
+
+- [Microsoft] Python
+- [Microsoft] autopep8
+
+Ctrl + Shift + M View | Problems
+
+### Formatting Python Code
+
+Ctrl + Shift + P, Format Document (σύμφωνα με το PEP 8 – Style Guide for Python Code)
+
+Για να μην εκτελείς το Format Document κάθε φορά:
+
+    "editor.formatOnSave": true
+
+### Running Python Code
+
+Ctrl + Shift + P, Open Keyboard Shortcuts
+
+search for "run python file", double click Keybinding, Ctrl + R
+
+### Python Implementations
+
+CPython
+
+- Jython Java
+- IronPython C#
+- PyPy Subset of Python
+
+- What is an expression?
+- An expression is a piece of code that produces a value.
+
+### 
+
+Strings
+
+built-in function for getting the legth of strings
+
+
+
+
+Escape Sequences
+Formatted Strings
+String Methods
+Numbers
+Working With Numbers
+Type Conversion
+Quiz
+Comparison Operators
+Conditional Statements
+Ternary Operator
+Logical Operators
+Short-circuit Evaluations
+Chaining Comparison Operators
+Quiz
+For Loops
+For..Else
+Nested Loops
+Iterables
+While Loops
+Infinite Loops
+Exercise
+Defining Functions
+Arguments
+Types of Functions
+Keyword Arguments
+Default Arguments
+xargs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
