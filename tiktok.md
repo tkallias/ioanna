@@ -148,6 +148,10 @@ https://www.facebook.com/photo/?fbid=10241565729656580&set=gm.1355915373371202&i
 
 
 
+https://www.tiktok.com/@barcode.marketing/video/7659711862358936854
+
+https://www.tiktok.com/@barcode.marketing/video/7660057635554692374
+
 
 
 
