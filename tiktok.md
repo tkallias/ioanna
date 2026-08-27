@@ -156,6 +156,12 @@ https://www.tiktok.com/@barcode.marketing/video/7660057635554692374
 
 
 
+Είπαμε γουόκ ατζέντα, αλλά εσείς το τερματίσατε.
+
+Με δύο κόουτς η Βίκιγκ. 😵‍💫
+
+https://pbs.twimg.com/media/HQvH5_gWUAAi9zQ?format=jpg&name=large
+
 
 
 
