@@ -176,16 +176,21 @@ https://pbs.twimg.com/media/HQvvylRW4AAsYkz?format=jpg&name=large
 
 
 
-Ήλιε
-https://www.tiktok.com/@palavosofficialfilm/video/7678100975747566850
 
-πλου
-https://www.tiktok.com/@palavosofficialfilm/video/7678675777637960982
 
+
+ΝΝ
 https://www.tiktok.com/@palavosofficialfilm/video/7469202270484221206
 
 
 
+
+ΜΟΝΑΧΟΚΌΡΗ ΜΕΧΡΙ ΣΤΙΓΜΉΣ:
+
+4-0 ΗΡΑΚΛΉΣ (ΜΠΛΕ ΕΜΦΆΝΙΣΗ)
+4-0 ΛΕΦΣΚΙ (ΜΠΛΕ ΕΜΦΆΝΙΣΗ)
+5-0 ΑΡΗΣ (ΜΠΛΕ ΕΜΦΆΝΙΣΗ)
+ΝΕΣΤΟ ΧΡΥΣΟΎΠΟΛΗΣ 0-2 (ΜΠΛΕ ΕΜΦΆΝΙΣΗ)
 
 
 
