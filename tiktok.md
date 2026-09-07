@@ -197,6 +197,10 @@ https://pbs.twimg.com/media/HRm9azcawAATpdb?format=jpg&name=900x900
 
 
 
+When your manager pings you on Microsoft Teams in the middle of your mid day nap
+
+https://pbs.twimg.com/media/HRi8_72XEAESTLg?format=jpg&name=large
+
 
 
 
