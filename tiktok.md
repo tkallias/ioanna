@@ -193,6 +193,8 @@ https://www.tiktok.com/@palavosofficialfilm/video/7469202270484221206
 ΝΕΣΤΟ ΧΡΥΣΟΎΠΟΛΗΣ 0-2 (ΜΠΛΕ ΕΜΦΆΝΙΣΗ)
 
 
+https://pbs.twimg.com/media/HRm9azcawAATpdb?format=jpg&name=900x900
+
 
 
 
