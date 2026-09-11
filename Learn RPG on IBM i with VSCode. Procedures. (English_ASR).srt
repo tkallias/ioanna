@@ -1,0 +1,1928 @@
+1
+00:00:00,640 --> 00:00:06,400
+Hello everyone. Welcome back to the
+
+2
+00:00:02,840 --> 00:00:08,720
+learn RPG on IBM i with VS Code series.
+
+3
+00:00:06,400 --> 00:00:10,840
+So far we've written complete RPG
+
+4
+00:00:08,720 --> 00:00:13,280
+programs. We've learned variables,
+
+5
+00:00:10,840 --> 00:00:15,680
+conditions, loops, arrays, data
+
+6
+00:00:13,280 --> 00:00:18,040
+structures, and parameters.
+
+7
+00:00:15,680 --> 00:00:20,280
+Today we're going to introduce one of
+
+8
+00:00:18,040 --> 00:00:21,880
+the most important concepts in modern
+
+9
+00:00:20,280 --> 00:00:23,760
+RPG programming.
+
+10
+00:00:21,880 --> 00:00:25,680
+The procedures.
+
+11
+00:00:23,760 --> 00:00:28,240
+Once you start using procedures, you'll
+
+12
+00:00:25,680 --> 00:00:31,040
+never want to write all your code inside
+
+13
+00:00:28,240 --> 00:00:33,600
+one huge program again.
+
+14
+00:00:31,040 --> 00:00:36,880
+They make programs easier to read,
+
+15
+00:00:33,600 --> 00:00:40,000
+easier to maintain, easier to test, and
+
+16
+00:00:36,880 --> 00:00:42,240
+much easier to reuse.
+
+17
+00:00:40,000 --> 00:00:44,880
+If you have programmed in Java,
+
+18
+00:00:42,240 --> 00:00:47,440
+Python, JavaScript, or C,
+
+19
+00:00:44,880 --> 00:00:49,960
+you will already know this concept.
+
+20
+00:00:47,440 --> 00:00:53,040
+A procedure in RPG is essentially the
+
+21
+00:00:49,960 --> 00:00:54,680
+same thing as a function or method in
+
+22
+00:00:53,040 --> 00:00:57,240
+those languages.
+
+23
+00:00:54,680 --> 00:00:59,760
+So today we'll learn how they work.
+
+24
+00:00:57,240 --> 00:00:59,760
+Let's go.
+
+25
+00:01:00,160 --> 00:01:04,239
+Imagine we need to calculate the final
+
+26
+00:01:02,360 --> 00:01:07,160
+price of an item.
+
+27
+00:01:04,239 --> 00:01:09,040
+Every time we sell a product, we need to
+
+28
+00:01:07,160 --> 00:01:10,120
+calculate the discount, calculate the
+
+29
+00:01:09,040 --> 00:01:12,760
+VAT,
+
+30
+00:01:10,120 --> 00:01:14,680
+return the final amount.
+
+31
+00:01:12,760 --> 00:01:16,920
+Without procedures, we would probably
+
+32
+00:01:14,680 --> 00:01:20,160
+duplicate this code many times.
+
+33
+00:01:16,920 --> 00:01:22,320
+Instead, we write it once and call it
+
+34
+00:01:20,160 --> 00:01:25,280
+whenever we need it.
+
+35
+00:01:22,320 --> 00:01:28,960
+This makes our programs cleaner, easier
+
+36
+00:01:25,280 --> 00:01:31,560
+to understand, easier to maintain.
+
+37
+00:01:28,960 --> 00:01:33,440
+One place to modify, everywhere
+
+38
+00:01:31,560 --> 00:01:36,080
+automatically benefits.
+
+39
+00:01:33,440 --> 00:01:38,360
+That's one of the basic principles of
+
+40
+00:01:36,080 --> 00:01:42,040
+good software design.
+
+41
+00:01:38,360 --> 00:01:42,040
+And of course, in RPG, too.
+
+42
+00:01:42,520 --> 00:01:46,240
+Well, every procedure begins with DCL
+
+43
+00:01:45,200 --> 00:01:49,440
+proc
+
+44
+00:01:46,240 --> 00:01:50,960
+and end proc, as you see in our main
+
+45
+00:01:49,440 --> 00:01:53,160
+procedure.
+
+46
+00:01:50,960 --> 00:01:55,960
+It's as simple as this.
+
+47
+00:01:53,160 --> 00:01:58,040
+Everything between those two statements
+
+48
+00:01:55,960 --> 00:02:00,040
+belongs to the procedure,
+
+49
+00:01:58,040 --> 00:02:02,520
+exactly like the main procedure, as I
+
+50
+00:02:00,040 --> 00:02:06,600
+said. So, for example, you can have
+
+51
+00:02:02,520 --> 00:02:09,080
+something like this, procedure name,
+
+52
+00:02:06,600 --> 00:02:12,360
+and end procedure, okay?
+
+53
+00:02:09,080 --> 00:02:14,680
+All the times you need, you will have
+
+54
+00:02:12,360 --> 00:02:16,320
+one procedure,
+
+55
+00:02:14,680 --> 00:02:17,440
+two procedures,
+
+56
+00:02:16,320 --> 00:02:21,640
+and
+
+57
+00:02:17,440 --> 00:02:22,760
+as much procedures you need, okay?
+
+58
+00:02:21,640 --> 00:02:25,400
+Well,
+
+59
+00:02:22,760 --> 00:02:28,480
+our program becomes a collections of
+
+60
+00:02:25,400 --> 00:02:31,040
+small pieces. Each one is responsible
+
+61
+00:02:28,480 --> 00:02:33,320
+for doing one thing well.
+
+62
+00:02:31,040 --> 00:02:36,400
+There's something important about it, as
+
+63
+00:02:33,320 --> 00:02:39,720
+small procedure is better. So, if you
+
+64
+00:02:36,400 --> 00:02:42,480
+think you can reduce a procedure, do it,
+
+65
+00:02:39,720 --> 00:02:46,040
+because that small piece of code could
+
+66
+00:02:42,480 --> 00:02:46,040
+be called from somewhere else.
+
+67
+00:02:46,800 --> 00:02:51,160
+Well, some procedures simply perform an
+
+68
+00:02:49,120 --> 00:02:52,760
+action. You'll see
+
+69
+00:02:51,160 --> 00:02:55,080
+how they work.
+
+70
+00:02:52,760 --> 00:02:58,120
+But, others calculate something and
+
+71
+00:02:55,080 --> 00:03:00,239
+return the result. This result can be a
+
+72
+00:02:58,120 --> 00:03:01,720
+simple value. We're going to see an
+
+73
+00:03:00,239 --> 00:03:04,000
+example now.
+
+74
+00:03:01,720 --> 00:03:06,040
+But, there are other procedures that can
+
+75
+00:03:04,000 --> 00:03:07,840
+return a complex result, a data
+
+76
+00:03:06,040 --> 00:03:09,760
+structure, for example.
+
+77
+00:03:07,840 --> 00:03:13,680
+We'll talk about it in future videos,
+
+78
+00:03:09,760 --> 00:03:16,160
+because it is very useful, okay?
+
+79
+00:03:13,680 --> 00:03:18,320
+Well, for example, imagine our code, we
+
+80
+00:03:16,160 --> 00:03:20,160
+can have something like this,
+
+81
+00:03:18,320 --> 00:03:22,600
+calculate
+
+82
+00:03:20,160 --> 00:03:25,600
+price.
+
+83
+00:03:22,600 --> 00:03:29,160
+Well, this procedure could receive unit
+
+84
+00:03:25,600 --> 00:03:32,000
+price, quantity, discount, and it could
+
+85
+00:03:29,160 --> 00:03:34,600
+return the final amount.
+
+86
+00:03:32,000 --> 00:03:36,840
+This is probably the most common type of
+
+87
+00:03:34,600 --> 00:03:38,120
+of procedure you'll write. For example,
+
+88
+00:03:36,840 --> 00:03:40,200
+we can have
+
+89
+00:03:38,120 --> 00:03:41,560
+the declaration,
+
+90
+00:03:40,200 --> 00:03:43,560
+that is going to be
+
+91
+00:03:41,560 --> 00:03:46,519
+something like this,
+
+92
+00:03:43,560 --> 00:03:46,519
+calculate price.
+
+93
+00:03:46,640 --> 00:03:49,080
+Let's
+
+94
+00:03:49,320 --> 00:03:53,840
+Okay?
+
+95
+00:03:50,560 --> 00:03:53,840
+And then we will have
+
+96
+00:03:58,000 --> 00:04:01,040
+this that is going to be
+
+97
+00:04:00,000 --> 00:04:03,080
+uh
+
+98
+00:04:01,040 --> 00:04:06,200
+the return value, the type of the return
+
+99
+00:04:03,080 --> 00:04:06,200
+value, okay?
+
+100
+00:04:08,560 --> 00:04:15,880
+And the parameters for our uh procedure
+
+101
+00:04:12,920 --> 00:04:15,880
+unit price
+
+102
+00:04:19,760 --> 00:04:22,600
+the quantity
+
+103
+00:04:27,320 --> 00:04:30,160
+the discount
+
+104
+00:04:33,480 --> 00:04:40,120
+And then here we'll uh declare
+
+105
+00:04:37,200 --> 00:04:40,120
+a subtotal.
+
+106
+00:04:43,480 --> 00:04:50,240
+Then subtotal
+
+107
+00:04:45,919 --> 00:04:52,680
+is going to be, for example, unit price
+
+108
+00:04:50,240 --> 00:04:53,800
+multiplied by
+
+109
+00:04:52,680 --> 00:04:55,880
+quantity.
+
+110
+00:04:53,800 --> 00:04:59,040
+Okay?
+
+111
+00:04:55,880 --> 00:05:00,720
+And after that, we will return
+
+112
+00:04:59,040 --> 00:05:03,360
+P subtotal
+
+113
+00:05:00,720 --> 00:05:03,360
+minus
+
+114
+00:05:03,840 --> 00:05:06,560
+the discount.
+
+115
+00:05:08,720 --> 00:05:12,640
+For example, this is a simple example,
+
+116
+00:05:11,000 --> 00:05:15,040
+okay?
+
+117
+00:05:12,640 --> 00:05:16,720
+Well, notice something. The variables
+
+118
+00:05:15,040 --> 00:05:20,640
+inside the procedure
+
+119
+00:05:16,720 --> 00:05:22,960
+they are all starting with the letter P.
+
+120
+00:05:20,640 --> 00:05:25,560
+And that's intentional, okay? Because it
+
+121
+00:05:22,960 --> 00:05:28,520
+immediately tell us that uh these are
+
+122
+00:05:25,560 --> 00:05:31,400
+variables only exist inside this
+
+123
+00:05:28,520 --> 00:05:34,080
+procedure, okay? We'll see later that
+
+124
+00:05:31,400 --> 00:05:36,520
+we'll have a global local variables and
+
+125
+00:05:34,080 --> 00:05:40,200
+global variables. And this is a way for
+
+126
+00:05:36,520 --> 00:05:40,200
+distinguish them, okay?
+
+127
+00:05:40,360 --> 00:05:46,040
+Of course, we'll need to send our
+
+128
+00:05:43,000 --> 00:05:47,919
+parameters correctly to the uh procedure
+
+129
+00:05:46,040 --> 00:05:50,400
+and declare here
+
+130
+00:05:47,919 --> 00:05:52,320
+a variable to to receive the return
+
+131
+00:05:50,400 --> 00:05:54,760
+value. Okay?
+
+132
+00:05:52,320 --> 00:05:56,760
+For that, we will have we can have
+
+133
+00:05:54,760 --> 00:05:58,840
+something like this.
+
+134
+00:05:56,760 --> 00:06:02,080
+G
+
+135
+00:05:58,840 --> 00:06:02,080
+total, for example.
+
+136
+00:06:04,000 --> 00:06:07,800
+Okay?
+
+137
+00:06:05,160 --> 00:06:11,800
+And we can
+
+138
+00:06:07,800 --> 00:06:14,080
+put it here. G total is equal to
+
+139
+00:06:11,800 --> 00:06:17,400
+and here the parameters that's going to
+
+140
+00:06:14,080 --> 00:06:18,160
+be, for example, unit price, 10,
+
+141
+00:06:17,400 --> 00:06:20,440
+uh
+
+142
+00:06:18,160 --> 00:06:23,919
+quantity, three,
+
+143
+00:06:20,440 --> 00:06:25,919
+and discount, 10, for example. Okay? And
+
+144
+00:06:23,919 --> 00:06:27,200
+we can
+
+145
+00:06:25,919 --> 00:06:30,384
+write,
+
+146
+00:06:27,200 --> 00:06:31,960
+uh the total amount for this item
+
+147
+00:06:30,384 --> 00:06:33,880
+[snorts] is
+
+148
+00:06:31,960 --> 00:06:37,400
+plus
+
+149
+00:06:33,880 --> 00:06:38,840
+for example, G total
+
+150
+00:06:37,400 --> 00:06:43,640
+this way.
+
+151
+00:06:38,840 --> 00:06:43,640
+So, we can run the program. Let's see.
+
+152
+00:06:44,040 --> 00:06:47,560
+Oh, there's something wrong. Let's see.
+
+153
+00:06:48,720 --> 00:06:53,720
+Oh, this is not this way. This is this
+
+154
+00:06:51,400 --> 00:06:53,720
+way.
+
+155
+00:06:54,960 --> 00:06:58,200
+Let's try again.
+
+156
+00:06:56,800 --> 00:06:59,120
+Okay, this is
+
+157
+00:06:58,200 --> 00:07:00,440
+um
+
+158
+00:06:59,120 --> 00:07:04,000
+compiled.
+
+159
+00:07:00,440 --> 00:07:04,000
+And let's see how it works.
+
+160
+00:07:04,840 --> 00:07:08,960
+Run action.
+
+161
+00:07:06,640 --> 00:07:11,360
+Go program.
+
+162
+00:07:08,960 --> 00:07:15,240
+And we are getting here the total amount
+
+163
+00:07:11,360 --> 00:07:18,800
+for this item is 27. Okay?
+
+164
+00:07:15,240 --> 00:07:18,800
+Well, this is just an example.
+
+165
+00:07:18,840 --> 00:07:24,320
+Well, we already see it, but one huge
+
+166
+00:07:21,640 --> 00:07:26,919
+advantage of procedures is that they can
+
+167
+00:07:24,320 --> 00:07:29,520
+have their own local variables.
+
+168
+00:07:26,919 --> 00:07:32,800
+For example, we will have
+
+169
+00:07:29,520 --> 00:07:32,800
+P subtotal
+
+170
+00:07:33,360 --> 00:07:41,120
+this way. That is a sub variable for
+
+171
+00:07:36,560 --> 00:07:43,520
+this sub this procedure. Okay?
+
+172
+00:07:41,120 --> 00:07:45,680
+Well, this exists only while the
+
+173
+00:07:43,520 --> 00:07:49,040
+procedure is running. Outside the
+
+174
+00:07:45,680 --> 00:07:51,120
+procedure, it simply doesn't exist.
+
+175
+00:07:49,040 --> 00:07:52,880
+Also, remember that the variable is
+
+176
+00:07:51,120 --> 00:07:56,440
+removed from memory every time the
+
+177
+00:07:52,880 --> 00:07:59,480
+procedure ends. So, the content inside
+
+178
+00:07:56,440 --> 00:08:01,880
+the variable is removed automatically.
+
+179
+00:07:59,480 --> 00:08:03,960
+Meanwhile, variables declared outside
+
+180
+00:08:01,880 --> 00:08:05,920
+the procedures are usually considered
+
+181
+00:08:03,960 --> 00:08:07,440
+considered global.
+
+182
+00:08:05,920 --> 00:08:09,200
+For example, we can have a global
+
+183
+00:08:07,440 --> 00:08:12,600
+variable here
+
+184
+00:08:09,200 --> 00:08:12,600
+outside the procedure.
+
+185
+00:08:20,880 --> 00:08:27,640
+For example, okay.
+
+186
+00:08:24,080 --> 00:08:31,280
+Well, we are using prefixes G for global
+
+187
+00:08:27,640 --> 00:08:32,719
+variable and P for a local variable or a
+
+188
+00:08:31,280 --> 00:08:34,719
+parameter.
+
+189
+00:08:32,719 --> 00:08:37,719
+This is not mandatory, but many
+
+190
+00:08:34,719 --> 00:08:39,240
+developers find it makes code much
+
+191
+00:08:37,719 --> 00:08:41,479
+easier to read.
+
+192
+00:08:39,240 --> 00:08:44,520
+Of course, every company has their own
+
+193
+00:08:41,479 --> 00:08:45,839
+rules, but when you immediately see G
+
+194
+00:08:44,520 --> 00:08:50,080
+customer
+
+195
+00:08:45,839 --> 00:08:52,680
+or G VAT or P subtotal, P discount, you
+
+196
+00:08:50,080 --> 00:08:53,839
+already know the scope of every
+
+197
+00:08:52,680 --> 00:08:58,120
+variable.
+
+198
+00:08:53,839 --> 00:08:58,120
+That's an habit worth considering.
+
+199
+00:08:58,720 --> 00:09:03,160
+Well, we already know, but exactly like
+
+200
+00:09:01,600 --> 00:09:06,120
+programs, procedures can receive
+
+201
+00:09:03,160 --> 00:09:10,280
+parameters. The syntax is exactly the
+
+202
+00:09:06,120 --> 00:09:12,680
+same using DECLPI and LPI. And of
+
+203
+00:09:10,280 --> 00:09:15,600
+course, these parameters can be input
+
+204
+00:09:12,680 --> 00:09:19,760
+using const as you already know.
+
+205
+00:09:15,600 --> 00:09:21,760
+Uh they can be output, optional, etc.
+
+206
+00:09:19,760 --> 00:09:24,320
+Exactly everything we learned in the
+
+207
+00:09:21,760 --> 00:09:27,040
+previous episode. So, everything you
+
+208
+00:09:24,320 --> 00:09:30,240
+have already learned about parameters
+
+209
+00:09:27,040 --> 00:09:30,240
+applies here, too.
+
+210
+00:09:30,560 --> 00:09:34,839
+Well, uh as I said before, using a
+
+211
+00:09:32,960 --> 00:09:37,440
+procedure is very simple.
+
+212
+00:09:34,839 --> 00:09:39,720
+You We a uh variable here, global
+
+213
+00:09:37,440 --> 00:09:42,760
+variable defined, declared, that is G
+
+214
+00:09:39,720 --> 00:09:43,840
+final price, and G final price is equal
+
+215
+00:09:42,760 --> 00:09:45,560
+to
+
+216
+00:09:43,840 --> 00:09:49,520
+according to this procedure, calculate
+
+217
+00:09:45,560 --> 00:09:50,640
+price with these three parameters.
+
+218
+00:09:49,520 --> 00:09:53,160
+And
+
+219
+00:09:50,640 --> 00:09:55,080
+well, the procedure returns the result,
+
+220
+00:09:53,160 --> 00:09:57,120
+and we continue working.
+
+221
+00:09:55,080 --> 00:09:59,480
+Our main program now becomes much
+
+222
+00:09:57,120 --> 00:10:00,600
+shorter and much easier to to
+
+223
+00:09:59,480 --> 00:10:03,360
+understand.
+
+224
+00:10:00,600 --> 00:10:06,240
+Instead of hundreds of calculation, we
+
+225
+00:10:03,360 --> 00:10:09,520
+simply read calculate price, which
+
+226
+00:10:06,240 --> 00:10:12,400
+explains exactly what the code is doing.
+
+227
+00:10:09,520 --> 00:10:15,000
+A procedure is like a black box that
+
+228
+00:10:12,400 --> 00:10:17,480
+makes something. We don't need to know
+
+229
+00:10:15,000 --> 00:10:20,000
+how it is done unless we did it.
+
+230
+00:10:17,480 --> 00:10:22,400
+And usually returns a value.
+
+231
+00:10:20,000 --> 00:10:22,400
+Okay?
+
+232
+00:10:23,080 --> 00:10:27,560
+Well, if you have worked with older RPG
+
+233
+00:10:25,440 --> 00:10:28,760
+programs, you'll probably see something
+
+234
+00:10:27,560 --> 00:10:30,760
+like this.
+
+235
+00:10:28,760 --> 00:10:30,760
+Um
+
+236
+00:10:34,720 --> 00:10:39,960
+my subroutine
+
+237
+00:10:37,800 --> 00:10:42,760
+Well, something like this, okay? And
+
+238
+00:10:39,960 --> 00:10:45,680
+some code here.
+
+239
+00:10:42,760 --> 00:10:47,880
+Well, these are subroutines.
+
+240
+00:10:45,680 --> 00:10:51,280
+They are different than procedures, but
+
+241
+00:10:47,880 --> 00:10:53,839
+in some cases are similar.
+
+242
+00:10:51,280 --> 00:10:56,240
+Well, uh years ago, they were the
+
+243
+00:10:53,839 --> 00:10:58,520
+standard way of dividing code.
+
+244
+00:10:56,240 --> 00:10:59,720
+Today, procedures are the preferred
+
+245
+00:10:58,520 --> 00:11:00,680
+solution.
+
+246
+00:10:59,720 --> 00:11:02,400
+Why?
+
+247
+00:11:00,680 --> 00:11:05,600
+Because procedures are much more
+
+248
+00:11:02,400 --> 00:11:07,880
+powerful. For example, subroutines uh
+
+249
+00:11:05,600 --> 00:11:10,200
+cannot receive parameters.
+
+250
+00:11:07,880 --> 00:11:12,760
+They cannot return values, and they
+
+251
+00:11:10,200 --> 00:11:15,400
+cannot declare local variables.
+
+252
+00:11:12,760 --> 00:11:18,040
+They work directly with program's global
+
+253
+00:11:15,400 --> 00:11:20,440
+variables. That means every subroutine
+
+254
+00:11:18,040 --> 00:11:22,680
+shares the same data, making large
+
+255
+00:11:20,440 --> 00:11:24,080
+programs harder to understand and
+
+256
+00:11:22,680 --> 00:11:25,720
+maintain.
+
+257
+00:11:24,080 --> 00:11:28,520
+Imagine, for example, using the same
+
+258
+00:11:25,720 --> 00:11:29,880
+variable in different parts of the code,
+
+259
+00:11:28,520 --> 00:11:32,640
+different
+
+260
+00:11:29,880 --> 00:11:34,960
+uh subroutines, for different things.
+
+261
+00:11:32,640 --> 00:11:36,400
+That's very hard sometimes to manage,
+
+262
+00:11:34,960 --> 00:11:39,240
+okay?
+
+263
+00:11:36,400 --> 00:11:41,760
+In case of procedures, well, they solve
+
+264
+00:11:39,240 --> 00:11:44,160
+all these limitations. That's why modern
+
+265
+00:11:41,760 --> 00:11:46,400
+RPG development is centered around
+
+266
+00:11:44,160 --> 00:11:48,320
+procedures. You'll still find
+
+267
+00:11:46,400 --> 00:11:51,240
+subroutines in stick in existing
+
+268
+00:11:48,320 --> 00:11:54,200
+applications because thousands of IBM i
+
+269
+00:11:51,240 --> 00:11:56,920
+systems have been running for decades.
+
+270
+00:11:54,200 --> 00:11:59,360
+So, it's important to recognize them
+
+271
+00:11:56,920 --> 00:12:01,160
+even if most new code should use
+
+272
+00:11:59,360 --> 00:12:03,280
+procedures instead.
+
+273
+00:12:01,160 --> 00:12:04,400
+You'll also see programs with
+
+274
+00:12:03,280 --> 00:12:06,360
+subroutines
+
+275
+00:12:04,400 --> 00:12:09,680
+with subroutines and procedures at the
+
+276
+00:12:06,360 --> 00:12:11,440
+same time. Okay?
+
+277
+00:12:09,680 --> 00:12:13,360
+Well, one thing I always like to
+
+278
+00:12:11,440 --> 00:12:16,640
+mention, if you're coming from another
+
+279
+00:12:13,360 --> 00:12:19,920
+language, don't think of procedures as
+
+280
+00:12:16,640 --> 00:12:22,920
+something unique to RPG. They're not. In
+
+281
+00:12:19,920 --> 00:12:25,920
+Java, they are methods. In C, they are
+
+282
+00:12:22,920 --> 00:12:28,880
+functions. In Python, functions. In
+
+283
+00:12:25,920 --> 00:12:31,480
+JavaScript, functions. The concept is
+
+284
+00:12:28,880 --> 00:12:32,760
+exactly the same. Only the syntax
+
+285
+00:12:31,480 --> 00:12:35,080
+changes.
+
+286
+00:12:32,760 --> 00:12:37,960
+Once you understand procedures, you're
+
+287
+00:12:35,080 --> 00:12:41,880
+also learning a concept you'll use in
+
+288
+00:12:37,960 --> 00:12:41,880
+almost every programming language.
+
+289
+00:12:42,680 --> 00:12:47,960
+Okay, now let's create an example.
+
+290
+00:12:46,040 --> 00:12:51,480
+Well, imagine a program that needs to
+
+291
+00:12:47,960 --> 00:12:53,680
+calculate the shipping for an order.
+
+292
+00:12:51,480 --> 00:12:56,440
+Then we are going to have a procedure
+
+293
+00:12:53,680 --> 00:12:59,440
+that calculates the shipping, okay? So,
+
+294
+00:12:56,440 --> 00:13:03,440
+let's start typing code.
+
+295
+00:12:59,440 --> 00:13:03,440
+Well, we're going to have
+
+296
+00:13:05,120 --> 00:13:08,280
+P_SHIPPING here.
+
+297
+00:13:09,440 --> 00:13:12,920
+It's P_SHIPPING because we are inside
+
+298
+00:13:11,520 --> 00:13:15,280
+the procedure
+
+299
+00:13:12,920 --> 00:13:17,520
+even if it is the main procedure, okay?
+
+300
+00:13:15,280 --> 00:13:19,760
+If we are declaring a global variable,
+
+301
+00:13:17,520 --> 00:13:21,280
+then it is going to be here outside the
+
+302
+00:13:19,760 --> 00:13:23,680
+procedure, okay?
+
+303
+00:13:21,280 --> 00:13:25,920
+In this case, we are declaring
+
+304
+00:13:23,680 --> 00:13:27,200
+this variable inside our main procedure,
+
+305
+00:13:25,920 --> 00:13:29,480
+okay?
+
+306
+00:13:27,200 --> 00:13:29,480
+Well,
+
+307
+00:13:29,560 --> 00:13:34,000
+well, imagine we have
+
+308
+00:13:31,600 --> 00:13:36,160
+J shipping is equal to calculate
+
+309
+00:13:34,000 --> 00:13:41,360
+shipping
+
+310
+00:13:36,160 --> 00:13:43,280
+with three parameters, 120,
+
+311
+00:13:41,360 --> 00:13:46,160
+USA,
+
+312
+00:13:43,280 --> 00:13:49,080
+and for example, uh
+
+313
+00:13:46,160 --> 00:13:50,880
+this way. Okay? And after that, we are
+
+314
+00:13:49,080 --> 00:13:57,040
+going to write
+
+315
+00:13:50,880 --> 00:13:57,040
+the total shipping is plus
+
+316
+00:13:57,800 --> 00:14:00,840
+J shipping
+
+317
+00:14:02,040 --> 00:14:07,880
+this way. Okay?
+
+318
+00:14:04,360 --> 00:14:09,920
+Well, the program is uh
+
+319
+00:14:07,880 --> 00:14:12,480
+finished, okay?
+
+320
+00:14:09,920 --> 00:14:14,560
+We are uh having here a main procedure.
+
+321
+00:14:12,480 --> 00:14:18,320
+We are calculating the shipping for an
+
+322
+00:14:14,560 --> 00:14:21,240
+order with a total amount of 120.
+
+323
+00:14:18,320 --> 00:14:23,200
+Uh the zone is going to be USA, and we
+
+324
+00:14:21,240 --> 00:14:27,200
+are activating the last parameter. That
+
+325
+00:14:23,200 --> 00:14:29,480
+means it is an express order, okay?
+
+326
+00:14:27,200 --> 00:14:32,480
+Well, the procedure will return to the
+
+327
+00:14:29,480 --> 00:14:35,360
+main procedure here um the total
+
+328
+00:14:32,480 --> 00:14:37,280
+shipping for for that order, okay?
+
+329
+00:14:35,360 --> 00:14:39,000
+We can call to the same procedure with
+
+330
+00:14:37,280 --> 00:14:40,280
+different parameters all the time we
+
+331
+00:14:39,000 --> 00:14:43,000
+need.
+
+332
+00:14:40,280 --> 00:14:45,680
+We uh but we only need to write a code
+
+333
+00:14:43,000 --> 00:14:48,360
+for the procedure once, okay? So, let's
+
+334
+00:14:45,680 --> 00:14:48,360
+let's do it.
+
+335
+00:14:48,920 --> 00:14:52,720
+Calculate shipping.
+
+336
+00:14:52,760 --> 00:14:57,080
+The name must be the same, okay?
+
+337
+00:14:55,280 --> 00:15:00,280
+Must be the same.
+
+338
+00:14:57,080 --> 00:15:02,160
+And we are going to have
+
+339
+00:15:00,280 --> 00:15:05,320
+a return value that is going to be, for
+
+340
+00:15:02,160 --> 00:15:08,880
+example, well, we have declared it uh
+
+341
+00:15:05,320 --> 00:15:13,240
+here like uh packed of 92,
+
+342
+00:15:08,880 --> 00:15:13,240
+let's do it again here, the same.
+
+343
+00:15:13,680 --> 00:15:16,600
+And we are going to have three
+
+344
+00:15:15,280 --> 00:15:20,320
+parameters.
+
+345
+00:15:16,600 --> 00:15:22,240
+The first one is uh going to be our
+
+346
+00:15:20,320 --> 00:15:24,160
+order amount.
+
+347
+00:15:22,240 --> 00:15:28,360
+That is a packed
+
+348
+00:15:24,160 --> 00:15:30,320
+of 72 const. Okay?
+
+349
+00:15:28,360 --> 00:15:32,800
+We're going to have ship
+
+350
+00:15:30,320 --> 00:15:32,800
+zone
+
+351
+00:15:33,640 --> 00:15:36,760
+three
+
+352
+00:15:34,760 --> 00:15:38,000
+uh const.
+
+353
+00:15:36,760 --> 00:15:42,200
+And
+
+354
+00:15:38,000 --> 00:15:44,520
+the last parameter is if it is express
+
+355
+00:15:42,200 --> 00:15:46,920
+indicator.
+
+356
+00:15:44,520 --> 00:15:46,920
+Okay?
+
+357
+00:15:47,120 --> 00:15:51,080
+Well, the first thing we're going to
+
+358
+00:15:48,200 --> 00:15:52,840
+check if the order
+
+359
+00:15:51,080 --> 00:15:55,040
+is
+
+360
+00:15:52,840 --> 00:15:57,840
+a greater or equal to
+
+361
+00:15:55,040 --> 00:16:00,680
+uh 200, for example. Okay?
+
+362
+00:15:57,840 --> 00:16:03,640
+Well, in that case, let's uh
+
+363
+00:16:00,680 --> 00:16:06,640
+for example, let's declare our shipping
+
+364
+00:16:03,640 --> 00:16:09,160
+is zero in this case. Okay? The order is
+
+365
+00:16:06,640 --> 00:16:11,080
+the shipping is free in this case. So,
+
+366
+00:16:09,160 --> 00:16:12,120
+let's return zero.
+
+367
+00:16:11,080 --> 00:16:15,360
+Okay?
+
+368
+00:16:12,120 --> 00:16:18,000
+You know that uh if you're calling to
+
+369
+00:16:15,360 --> 00:16:20,520
+this uh procedure here
+
+370
+00:16:18,000 --> 00:16:23,560
+and it is entering here and the uh order
+
+371
+00:16:20,520 --> 00:16:26,040
+amount is greater than 200, for example,
+
+372
+00:16:23,560 --> 00:16:29,240
+then it will return zero and it will not
+
+373
+00:16:26,040 --> 00:16:30,720
+continue with the rest of the code.
+
+374
+00:16:29,240 --> 00:16:32,960
+Okay?
+
+375
+00:16:30,720 --> 00:16:37,960
+Well, now next the next thing we're
+
+376
+00:16:32,960 --> 00:16:37,960
+going to check is the shipping zone.
+
+377
+00:16:39,760 --> 00:16:43,920
+When it is
+
+378
+00:16:41,320 --> 00:16:46,600
+uh USA
+
+379
+00:16:43,920 --> 00:16:49,200
+then the base fee
+
+380
+00:16:46,600 --> 00:16:53,200
+is going to be
+
+381
+00:16:49,200 --> 00:16:53,200
+for example, 5.99.
+
+382
+00:16:53,960 --> 00:16:58,920
+When it is Europe
+
+383
+00:16:57,440 --> 00:17:01,920
+it's going to be
+
+384
+00:16:58,920 --> 00:17:04,920
+12.50.
+
+385
+00:17:01,920 --> 00:17:10,199
+And otherwise, we'll get
+
+386
+00:17:04,920 --> 00:17:10,199
+a base fee of 25, for example. Okay?
+
+387
+00:17:11,079 --> 00:17:17,400
+And now let's check if it is express. If
+
+388
+00:17:14,199 --> 00:17:17,400
+it is express
+
+389
+00:17:18,120 --> 00:17:25,640
+uh for example, we can
+
+390
+00:17:21,160 --> 00:17:25,640
+declare total ship as
+
+391
+00:17:25,800 --> 00:17:29,320
+Well, we have
+
+392
+00:17:27,520 --> 00:17:31,520
+to declare here.
+
+393
+00:17:29,320 --> 00:17:31,520
+Um
+
+394
+00:17:32,040 --> 00:17:34,800
+base fee
+
+395
+00:17:39,640 --> 00:17:44,400
+total ship and total ship is
+
+396
+00:17:44,560 --> 00:17:48,920
+this way. Okay.
+
+397
+00:17:46,640 --> 00:17:50,120
+Well, in this case, if if it is express,
+
+398
+00:17:48,920 --> 00:17:50,720
+then
+
+399
+00:17:50,120 --> 00:17:54,480
+uh
+
+400
+00:17:50,720 --> 00:17:55,920
+we're going to increment our base fee
+
+401
+00:17:54,480 --> 00:17:59,520
+to
+
+402
+00:17:55,920 --> 00:18:01,680
+hip with 15.
+
+403
+00:17:59,520 --> 00:18:03,240
+else
+
+404
+00:18:01,680 --> 00:18:06,240
+if this
+
+405
+00:18:03,240 --> 00:18:08,640
+the base fee calculated, okay?
+
+406
+00:18:06,240 --> 00:18:10,400
+And after that, we're going to return
+
+407
+00:18:08,640 --> 00:18:12,680
+the total ship.
+
+408
+00:18:10,400 --> 00:18:13,840
+Okay?
+
+409
+00:18:12,680 --> 00:18:14,840
+Well,
+
+410
+00:18:13,840 --> 00:18:15,680
+um
+
+411
+00:18:14,840 --> 00:18:20,320
+we have
+
+412
+00:18:15,680 --> 00:18:22,400
+written a few lines of code, okay? Well,
+
+413
+00:18:20,320 --> 00:18:24,480
+the first thing uh we're doing here is
+
+414
+00:18:22,400 --> 00:18:27,000
+checking if the amount of the order is
+
+415
+00:18:24,480 --> 00:18:28,720
+greater than uh 200. In that case, the
+
+416
+00:18:27,000 --> 00:18:30,160
+shipping is free, so we are returning
+
+417
+00:18:28,720 --> 00:18:32,440
+zero.
+
+418
+00:18:30,160 --> 00:18:34,200
+Then, we are checking checking if it is
+
+419
+00:18:32,440 --> 00:18:37,160
+not zero. Well, then we are checking
+
+420
+00:18:34,200 --> 00:18:37,960
+checking the ship zone.
+
+421
+00:18:37,160 --> 00:18:40,520
+Uh
+
+422
+00:18:37,960 --> 00:18:41,760
+we are adding a base fee depending on
+
+423
+00:18:40,520 --> 00:18:45,920
+this zone.
+
+424
+00:18:41,760 --> 00:18:49,720
+We are having a this fee uh 5.99 if it
+
+425
+00:18:45,920 --> 00:18:53,840
+is USA, uh 12.50 if it is Europe, and
+
+426
+00:18:49,720 --> 00:18:55,480
+the rest all of of the zones are 25,
+
+427
+00:18:53,840 --> 00:18:56,760
+okay?
+
+428
+00:18:55,480 --> 00:18:59,960
+And then, we are checking if it is
+
+429
+00:18:56,760 --> 00:19:03,480
+express uh express or not. If it is
+
+430
+00:18:59,960 --> 00:19:06,520
+express, then we are adding um
+
+431
+00:19:03,480 --> 00:19:10,000
+a surcharge of 15.
+
+432
+00:19:06,520 --> 00:19:12,680
+And if not, then we are uh returning
+
+433
+00:19:10,000 --> 00:19:15,760
+directly the total ship now that is uh
+
+434
+00:19:12,680 --> 00:19:17,480
+the base fee directly, okay?
+
+435
+00:19:15,760 --> 00:19:19,680
+Well,
+
+436
+00:19:17,480 --> 00:19:22,640
+we have the program
+
+437
+00:19:19,680 --> 00:19:26,600
+complete. Let's compile it.
+
+438
+00:19:22,640 --> 00:19:26,600
+Let's see if it is working or not.
+
+439
+00:19:27,360 --> 00:19:31,360
+Okay, there's something wrong. Let's
+
+440
+00:19:28,920 --> 00:19:31,360
+see.
+
+441
+00:19:38,120 --> 00:19:45,280
+Oh, we have declaring
+
+442
+00:19:40,400 --> 00:19:48,480
+using a G here instead of a P, okay?
+
+443
+00:19:45,280 --> 00:19:48,480
+Let's try it again.
+
+444
+00:19:50,400 --> 00:19:55,640
+Okay, now it is compiled.
+
+445
+00:19:53,080 --> 00:19:58,280
+And let's see if it is
+
+446
+00:19:55,640 --> 00:20:01,200
+running correctly. Run action.
+
+447
+00:19:58,280 --> 00:20:01,200
+Go program.
+
+448
+00:20:03,640 --> 00:20:09,320
+And that's what we are getting is the
+
+449
+00:20:05,880 --> 00:20:12,600
+amount of shipping is 20.99.
+
+450
+00:20:09,320 --> 00:20:14,600
+That is what we are expecting to
+
+451
+00:20:12,600 --> 00:20:18,360
+receive, okay?
+
+452
+00:20:14,600 --> 00:20:19,800
+Why is this important this amount?
+
+453
+00:20:18,360 --> 00:20:22,600
+Because
+
+454
+00:20:19,800 --> 00:20:27,480
+we are sending 120.
+
+455
+00:20:22,600 --> 00:20:29,880
+120 is less than 20 than 200. So, we are
+
+456
+00:20:27,480 --> 00:20:31,600
+going here checking the ship zone, that
+
+457
+00:20:29,880 --> 00:20:34,160
+is USA in this case.
+
+458
+00:20:31,600 --> 00:20:36,640
+So, it is 5.99
+
+459
+00:20:34,160 --> 00:20:40,080
+plus 15, that is because it is
+
+460
+00:20:36,640 --> 00:20:44,880
+expressed. So, we are getting 20.99.
+
+461
+00:20:40,080 --> 00:20:44,880
+So, the program is running correctly.
+
+462
+00:20:45,280 --> 00:20:50,120
+Okay, so today we learned what
+
+463
+00:20:47,240 --> 00:20:53,080
+procedures are, why they are so useful,
+
+464
+00:20:50,120 --> 00:20:54,640
+how to declare one, how to return
+
+465
+00:20:53,080 --> 00:20:56,840
+values,
+
+466
+00:20:54,640 --> 00:20:59,200
+how to use local variable, how to pass
+
+467
+00:20:56,840 --> 00:21:01,760
+parameters, the difference between
+
+468
+00:20:59,200 --> 00:21:03,320
+procedures and subroutines.
+
+469
+00:21:01,760 --> 00:21:06,440
+Well, this is only the beginning.
+
+470
+00:21:03,320 --> 00:21:08,520
+Procedures can do so much, much more.
+
+471
+00:21:06,440 --> 00:21:11,520
+In the next episode, we are going to
+
+472
+00:21:08,520 --> 00:21:14,120
+start talking about highly.
+
+473
+00:21:11,520 --> 00:21:16,760
+That's a very important concept in RPG
+
+474
+00:21:14,120 --> 00:21:19,480
+and it is not new, but many people
+
+475
+00:21:16,760 --> 00:21:21,680
+working with RPG is still not using it.
+
+476
+00:21:19,480 --> 00:21:24,040
+But once you understand it, you'll use
+
+477
+00:21:21,680 --> 00:21:25,720
+it all the time.
+
+478
+00:21:24,040 --> 00:21:28,240
+I hope you liked the video and that it
+
+479
+00:21:25,720 --> 00:21:30,480
+was useful to you. Remember to like and
+
+480
+00:21:28,240 --> 00:21:31,880
+subscribe if you aren't already. See you
+
+481
+00:21:30,480 --> 00:21:34,400
+on the next video and thanks for
+
+482
+00:21:31,880 --> 00:21:34,400
+watching.
+

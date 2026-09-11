@@ -1,0 +1,1320 @@
+1
+00:00:01,280 --> 00:00:05,440
+Hello everyone, and welcome to a new IBM
+
+2
+00:00:03,000 --> 00:00:07,640
+i RPG sample video.
+
+3
+00:00:05,440 --> 00:00:10,240
+Well, this is episode 11 of the series
+
+4
+00:00:07,640 --> 00:00:12,560
+learn RPG on IBM i with VS code. In the
+
+5
+00:00:10,240 --> 00:00:15,600
+previous videos, we learn how to work
+
+6
+00:00:12,560 --> 00:00:18,040
+with arrays, data structures, lists, for
+
+7
+00:00:15,600 --> 00:00:19,120
+each loops, and different ways to sort
+
+8
+00:00:18,040 --> 00:00:21,320
+data.
+
+9
+00:00:19,120 --> 00:00:24,160
+But all the arrays we used had one thing
+
+10
+00:00:21,320 --> 00:00:27,320
+in common, their size was fixed.
+
+11
+00:00:24,160 --> 00:00:30,200
+If we define an array with 100 elements,
+
+12
+00:00:27,320 --> 00:00:31,760
+it always had 100 elements.
+
+13
+00:00:30,200 --> 00:00:34,640
+Today, we're going to learn something
+
+14
+00:00:31,760 --> 00:00:36,000
+much more flexible, variable dimension
+
+15
+00:00:34,640 --> 00:00:38,720
+arrays.
+
+16
+00:00:36,000 --> 00:00:41,080
+Arrays that can grow, arrays that can
+
+17
+00:00:38,720 --> 00:00:43,680
+shrink, and arrays whose number of
+
+18
+00:00:41,080 --> 00:00:45,120
+elements changes while the program is
+
+19
+00:00:43,680 --> 00:00:46,920
+running.
+
+20
+00:00:45,120 --> 00:00:49,280
+You'll see that RPG has some
+
+21
+00:00:46,920 --> 00:00:52,280
+surprisingly modern features that many
+
+22
+00:00:49,280 --> 00:00:55,080
+developers don't even know exist.
+
+23
+00:00:52,280 --> 00:00:55,080
+So, let's go.
+
+24
+00:00:56,000 --> 00:01:00,120
+Before learning variable dimension
+
+25
+00:00:57,880 --> 00:01:03,000
+arrays, let's quickly remember how
+
+26
+00:01:00,120 --> 00:01:06,120
+normal arrays work.
+
+27
+00:01:03,000 --> 00:01:07,880
+Well, this array will always contains
+
+28
+00:01:06,120 --> 00:01:10,880
+100 elements.
+
+29
+00:01:07,880 --> 00:01:12,240
+Even if we only use the three first
+
+30
+00:01:10,880 --> 00:01:15,080
+positions.
+
+31
+00:01:12,240 --> 00:01:16,440
+The array still reserves space for 100
+
+32
+00:01:15,080 --> 00:01:18,400
+elements.
+
+33
+00:01:16,440 --> 00:01:21,880
+This is perfectly fine in many
+
+34
+00:01:18,400 --> 00:01:25,400
+situations, but what happens if we don't
+
+35
+00:01:21,880 --> 00:01:28,080
+know how many customers we'll have,
+
+36
+00:01:25,400 --> 00:01:31,840
+we read records from a file, we call an
+
+37
+00:01:28,080 --> 00:01:33,960
+API, we process the JSON document.
+
+38
+00:01:31,840 --> 00:01:35,800
+Sometimes, we need an array that can
+
+39
+00:01:33,960 --> 00:01:41,320
+grow dynamically.
+
+40
+00:01:35,800 --> 00:01:41,320
+And that's exactly that RPG provides.
+
+41
+00:01:41,400 --> 00:01:45,120
+The first type we're going to talk about
+
+42
+00:01:43,360 --> 00:01:47,920
+is var.
+
+43
+00:01:45,120 --> 00:01:47,920
+Let me write.
+
+44
+00:01:56,280 --> 00:01:57,560
+Well, let's
+
+45
+00:01:57,246 --> 00:02:00,160
+>> [snorts]
+
+46
+00:01:57,560 --> 00:02:03,920
+>> uh understand this declaration.
+
+47
+00:02:00,160 --> 00:02:06,440
+Var means the array has a variable
+
+48
+00:02:03,920 --> 00:02:09,880
+number of elements, okay?
+
+49
+00:02:06,440 --> 00:02:12,320
+And 1,000 means the maximum number of
+
+50
+00:02:09,880 --> 00:02:14,959
+elements allowed.
+
+51
+00:02:12,320 --> 00:02:18,120
+Important, the array does not start with
+
+52
+00:02:14,959 --> 00:02:21,520
+1,000 elements. It starts with zero
+
+53
+00:02:18,120 --> 00:02:23,280
+elements. Yes, zero.
+
+54
+00:02:21,520 --> 00:02:26,120
+This is one of the most surprising
+
+55
+00:02:23,280 --> 00:02:29,959
+things for RPG developers when they
+
+56
+00:02:26,120 --> 00:02:29,959
+first see var arrays.
+
+57
+00:02:31,160 --> 00:02:37,440
+To increase the current number of
+
+58
+00:02:33,520 --> 00:02:39,880
+elements, we'll use elem. So,
+
+59
+00:02:37,440 --> 00:02:39,880
+this
+
+60
+00:02:43,200 --> 00:02:48,080
+If we write this, now the array contains
+
+61
+00:02:45,600 --> 00:02:51,520
+five active elements.
+
+62
+00:02:48,080 --> 00:02:51,520
+We can use them normally.
+
+63
+00:03:18,720 --> 00:03:25,200
+Okay?
+
+64
+00:03:20,560 --> 00:03:25,200
+And if later we need more, we can do
+
+65
+00:03:27,560 --> 00:03:31,480
+this.
+
+66
+00:03:28,840 --> 00:03:36,440
+And then the array grows.
+
+67
+00:03:31,480 --> 00:03:36,440
+And if we need fewer, we only have to do
+
+68
+00:03:38,320 --> 00:03:42,040
+For example,
+
+69
+00:03:39,560 --> 00:03:44,840
+and the array will shrink.
+
+70
+00:03:42,040 --> 00:03:47,080
+This gives us complete control over the
+
+71
+00:03:44,840 --> 00:03:48,440
+current size of the array.
+
+72
+00:03:47,080 --> 00:03:51,640
+Okay?
+
+73
+00:03:48,440 --> 00:03:55,080
+Problems. Well, if we use a position
+
+74
+00:03:51,640 --> 00:03:55,080
+that is not set.
+
+75
+00:03:56,200 --> 00:04:00,040
+For example,
+
+76
+00:03:57,560 --> 00:04:04,680
+if we have LM customer names equals to
+
+77
+00:04:00,040 --> 00:04:04,680
+three and we use this position,
+
+78
+00:04:07,000 --> 00:04:12,400
+then it will crash, okay?
+
+79
+00:04:10,160 --> 00:04:15,080
+It is important to set the number of
+
+80
+00:04:12,400 --> 00:04:18,920
+elements that we are going to use before
+
+81
+00:04:15,080 --> 00:04:18,920
+adding information to the array.
+
+82
+00:04:20,280 --> 00:04:23,880
+Well, until now,
+
+83
+00:04:21,880 --> 00:04:25,240
+when we use four
+
+84
+00:04:23,880 --> 00:04:27,000
+four loops,
+
+85
+00:04:25,240 --> 00:04:28,640
+let me remove this.
+
+86
+00:04:27,000 --> 00:04:32,760
+Then
+
+87
+00:04:28,640 --> 00:04:32,760
+we are using four this way.
+
+88
+00:04:34,080 --> 00:04:38,520
+Okay?
+
+89
+00:04:35,320 --> 00:04:40,960
+Well, in our examples, we used to use LM
+
+90
+00:04:38,520 --> 00:04:40,960
+here.
+
+91
+00:04:44,400 --> 00:04:49,040
+Okay? But now, with a variable dimension
+
+92
+00:04:46,840 --> 00:04:52,360
+array, the number of active elements can
+
+93
+00:04:49,040 --> 00:04:55,160
+change. So, instead of of using a fixed
+
+94
+00:04:52,360 --> 00:04:58,280
+number here, 100 for example,
+
+95
+00:04:55,160 --> 00:05:02,560
+we will always write LM in this kind of
+
+96
+00:04:58,280 --> 00:05:02,560
+arrays, okay? It is important to know.
+
+97
+00:05:03,240 --> 00:05:07,000
+For example, doing something like this
+
+98
+00:05:11,880 --> 00:05:16,720
+will write
+
+99
+00:05:14,440 --> 00:05:16,720
+Let me
+
+100
+00:05:17,480 --> 00:05:25,600
+Okay? This will write all the customers
+
+101
+00:05:20,440 --> 00:05:27,520
+inside our array. So, this is um
+
+102
+00:05:25,600 --> 00:05:29,600
+one of the most common patterns when
+
+103
+00:05:27,520 --> 00:05:32,280
+working with var arrays.
+
+104
+00:05:29,600 --> 00:05:34,600
+This loop automatically adapts to the
+
+105
+00:05:32,280 --> 00:05:38,120
+current size of the array.
+
+106
+00:05:34,600 --> 00:05:40,840
+It It doesn't matter if we are
+
+107
+00:05:38,120 --> 00:05:43,640
+incrementing it or decrementing it. If
+
+108
+00:05:40,840 --> 00:05:46,640
+we are using LM, it will always read
+
+109
+00:05:43,640 --> 00:05:49,040
+returns the uh, actual size of the
+
+110
+00:05:46,640 --> 00:05:49,040
+array.
+
+111
+00:05:49,280 --> 00:05:54,120
+Well, now let's see something even more
+
+112
+00:05:51,280 --> 00:05:54,120
+interesting.
+
+113
+00:05:59,800 --> 00:06:02,640
+Auto arrays.
+
+114
+00:06:03,640 --> 00:06:07,560
+Well, this uh, also creates a variable
+
+115
+00:06:05,720 --> 00:06:09,560
+dimension array,
+
+116
+00:06:07,560 --> 00:06:12,600
+but there is a big difference.
+
+117
+00:06:09,560 --> 00:06:14,720
+With var, we must explicitly increase
+
+118
+00:06:12,600 --> 00:06:17,960
+the size using elem.
+
+119
+00:06:14,720 --> 00:06:19,600
+And with auto, RPE can increase it
+
+120
+00:06:17,960 --> 00:06:23,080
+automatically.
+
+121
+00:06:19,600 --> 00:06:23,080
+For example, if we write
+
+122
+00:06:23,440 --> 00:06:25,919
+this,
+
+123
+00:06:27,600 --> 00:06:32,280
+well,
+
+124
+00:06:28,800 --> 00:06:34,240
+immediately RPE expands the array.
+
+125
+00:06:32,280 --> 00:06:37,320
+The current number of elements now
+
+126
+00:06:34,240 --> 00:06:39,960
+becomes 100 automatically.
+
+127
+00:06:37,320 --> 00:06:44,560
+Uh, we don't need elem in this case.
+
+128
+00:06:39,960 --> 00:06:46,680
+That's where the name auto comes from.
+
+129
+00:06:44,560 --> 00:06:49,160
+One of the nicest features of auto
+
+130
+00:06:46,680 --> 00:06:51,840
+arrays is next.
+
+131
+00:06:49,160 --> 00:06:55,560
+Imagine we are reading customers from
+
+132
+00:06:51,840 --> 00:06:59,200
+file. We want to uh, store them inside
+
+133
+00:06:55,560 --> 00:07:00,160
+our uh, inside our array.
+
+134
+00:06:59,200 --> 00:07:04,240
+Well,
+
+135
+00:07:00,160 --> 00:07:08,200
+instead of keeping a counter this way
+
+136
+00:07:04,240 --> 00:07:08,200
+and adding information this way,
+
+137
+00:07:10,400 --> 00:07:15,720
+okay?
+
+138
+00:07:11,840 --> 00:07:15,720
+We can simply do something like this.
+
+139
+00:07:17,520 --> 00:07:21,880
+Next equal to name.
+
+140
+00:07:23,080 --> 00:07:27,640
+Every assignment
+
+141
+00:07:24,840 --> 00:07:31,440
+creates a new element, increases the
+
+142
+00:07:27,640 --> 00:07:34,480
+size, and store the value automatically.
+
+143
+00:07:31,440 --> 00:07:35,919
+This is incredibly useful. It feels very
+
+144
+00:07:34,480 --> 00:07:39,800
+similar to adding elements to a
+
+145
+00:07:35,919 --> 00:07:39,800
+collection in other languages.
+
+146
+00:07:39,880 --> 00:07:45,280
+Well, now let's create a realistic
+
+147
+00:07:41,920 --> 00:07:47,640
+example. We'll create an outdoor array,
+
+148
+00:07:45,280 --> 00:07:49,200
+we'll add customers, and then we will
+
+149
+00:07:47,640 --> 00:07:52,400
+display them.
+
+150
+00:07:49,200 --> 00:07:56,000
+Okay, so let's do it. We have our
+
+151
+00:07:52,400 --> 00:07:59,040
+basic schema of program of a simple
+
+152
+00:07:56,000 --> 00:08:01,680
+program in RPA.
+
+153
+00:07:59,040 --> 00:08:02,920
+We're going to
+
+154
+00:08:01,680 --> 00:08:05,560
+have
+
+155
+00:08:02,920 --> 00:08:08,480
+this array. We're going to use an
+
+156
+00:08:05,560 --> 00:08:10,880
+outdoor array in this case
+
+157
+00:08:08,480 --> 00:08:12,320
+because for me is more much more
+
+158
+00:08:10,880 --> 00:08:13,360
+flexible.
+
+159
+00:08:12,320 --> 00:08:15,880
+And we are
+
+160
+00:08:13,360 --> 00:08:17,440
+going to add
+
+161
+00:08:15,880 --> 00:08:18,360
+using next
+
+162
+00:08:17,440 --> 00:08:21,000
+some
+
+163
+00:08:18,360 --> 00:08:21,000
+different
+
+164
+00:08:21,440 --> 00:08:24,120
+customers.
+
+165
+00:08:39,840 --> 00:08:45,120
+Okay, it is enough.
+
+166
+00:08:41,719 --> 00:08:46,120
+Uh we are adding four customers, okay?
+
+167
+00:08:45,120 --> 00:08:49,120
+And
+
+168
+00:08:46,120 --> 00:08:50,640
+imagine we want to display all of them
+
+169
+00:08:49,120 --> 00:08:53,440
+in our
+
+170
+00:08:50,640 --> 00:08:55,320
+in our screen in our job lock. Well, we
+
+171
+00:08:53,440 --> 00:08:57,960
+can use a for each
+
+172
+00:08:55,320 --> 00:08:57,960
+in this case.
+
+173
+00:09:00,680 --> 00:09:08,000
+In customer names, you remember we can
+
+174
+00:09:04,680 --> 00:09:09,080
+use a variable and to to go through the
+
+175
+00:09:08,000 --> 00:09:12,120
+array,
+
+176
+00:09:09,080 --> 00:09:12,120
+then we have to
+
+177
+00:09:13,040 --> 00:09:15,839
+declare it.
+
+178
+00:09:16,839 --> 00:09:19,280
+Okay.
+
+179
+00:09:20,280 --> 00:09:26,560
+And we only have to
+
+180
+00:09:23,000 --> 00:09:29,200
+send message customer name
+
+181
+00:09:26,560 --> 00:09:30,880
+to our job lock.
+
+182
+00:09:29,200 --> 00:09:32,800
+Okay?
+
+183
+00:09:30,880 --> 00:09:34,040
+Well, notice that we never use a
+
+184
+00:09:32,800 --> 00:09:37,200
+counter.
+
+185
+00:09:34,040 --> 00:09:40,760
+We never used LM, and the array grows
+
+186
+00:09:37,200 --> 00:09:43,560
+automatically using next. Okay?
+
+187
+00:09:40,760 --> 00:09:46,480
+Let me now compile it, so you will see
+
+188
+00:09:43,560 --> 00:09:46,480
+how it works.
+
+189
+00:09:46,880 --> 00:09:49,680
+Compile it.
+
+190
+00:09:50,240 --> 00:09:55,440
+Okay.
+
+191
+00:09:51,840 --> 00:09:55,440
+And now let's run it.
+
+192
+00:09:55,560 --> 00:10:00,320
+Run action.
+
+193
+00:09:57,400 --> 00:10:00,320
+Go program.
+
+194
+00:10:00,680 --> 00:10:08,000
+And if you see, we have all our
+
+195
+00:10:04,520 --> 00:10:11,280
+different elements in our screen.
+
+196
+00:10:08,000 --> 00:10:12,880
+We are not using in in any moment, we
+
+197
+00:10:11,280 --> 00:10:14,120
+are not using
+
+198
+00:10:12,880 --> 00:10:17,880
+a counter.
+
+199
+00:10:14,120 --> 00:10:21,000
+And it knows that inside this array, we
+
+200
+00:10:17,880 --> 00:10:22,560
+have only four positions. Okay?
+
+201
+00:10:21,000 --> 00:10:25,520
+Even
+
+202
+00:10:22,560 --> 00:10:27,400
+when we are declaring it with 1,000
+
+203
+00:10:25,520 --> 00:10:30,040
+position. Okay, but
+
+204
+00:10:27,400 --> 00:10:31,120
+as we are using auto, it is very very
+
+205
+00:10:30,040 --> 00:10:32,320
+simple.
+
+206
+00:10:31,120 --> 00:10:35,800
+Okay?
+
+207
+00:10:32,320 --> 00:10:39,680
+And if it is if we need need to add some
+
+208
+00:10:35,800 --> 00:10:39,680
+some customer more,
+
+209
+00:10:40,800 --> 00:10:43,400
+order more,
+
+210
+00:10:44,440 --> 00:10:51,720
+we only have to do it, and we can
+
+211
+00:10:48,839 --> 00:10:54,360
+do this again.
+
+212
+00:10:51,720 --> 00:10:54,360
+And then
+
+213
+00:10:54,440 --> 00:10:57,680
+let me compile it again.
+
+214
+00:10:58,680 --> 00:11:03,280
+Okay.
+
+215
+00:11:00,280 --> 00:11:03,280
+And if we see,
+
+216
+00:11:08,080 --> 00:11:10,720
+now we are
+
+217
+00:11:10,880 --> 00:11:15,040
+First, we are sending
+
+218
+00:11:12,760 --> 00:11:17,080
+to our job log the first elements, the
+
+219
+00:11:15,040 --> 00:11:19,240
+four first elements, because we only
+
+220
+00:11:17,080 --> 00:11:22,080
+have four elements in the array.
+
+221
+00:11:19,240 --> 00:11:23,200
+And then we are adding a new element,
+
+222
+00:11:22,080 --> 00:11:26,600
+order more,
+
+223
+00:11:23,200 --> 00:11:28,000
+and we are doing the same
+
+224
+00:11:26,600 --> 00:11:29,960
+the same
+
+225
+00:11:28,000 --> 00:11:33,760
+loop.
+
+226
+00:11:29,960 --> 00:11:36,920
+And then it is writing five elements.
+
+227
+00:11:33,760 --> 00:11:39,640
+Okay? It knows that inside the array now
+
+228
+00:11:36,920 --> 00:11:42,480
+we have five elements instead of four,
+
+229
+00:11:39,640 --> 00:11:44,240
+and it is writing all of them in our job
+
+230
+00:11:42,480 --> 00:11:46,680
+block automatically.
+
+231
+00:11:44,240 --> 00:11:49,480
+Okay?
+
+232
+00:11:46,680 --> 00:11:52,880
+Well, of course, we can also reduce the
+
+233
+00:11:49,480 --> 00:11:54,360
+current number of elements of our array.
+
+234
+00:11:52,880 --> 00:11:56,960
+Suppose we are
+
+235
+00:11:54,360 --> 00:11:59,000
+Suppose the array currently contains,
+
+236
+00:11:56,960 --> 00:12:01,400
+as in this case, five elements. We are
+
+237
+00:11:59,000 --> 00:12:02,720
+adding five four elements here, and all
+
+238
+00:12:01,400 --> 00:12:04,000
+the one here.
+
+239
+00:12:02,720 --> 00:12:05,680
+Well, we can
+
+240
+00:12:04,000 --> 00:12:09,880
+do something something do something like
+
+241
+00:12:05,680 --> 00:12:10,920
+this. LM customer names is equal to
+
+242
+00:12:09,880 --> 00:12:12,400
+uh
+
+243
+00:12:10,920 --> 00:12:14,760
+two.
+
+244
+00:12:12,400 --> 00:12:17,120
+And then,
+
+245
+00:12:14,760 --> 00:12:18,880
+only these two first elements of the
+
+246
+00:12:17,120 --> 00:12:21,880
+array are active.
+
+247
+00:12:18,880 --> 00:12:23,960
+The array has effectively been reduced.
+
+248
+00:12:21,880 --> 00:12:25,920
+This can be very useful when filtering
+
+249
+00:12:23,960 --> 00:12:27,240
+data or removing elements from a
+
+250
+00:12:25,920 --> 00:12:29,680
+processing,
+
+251
+00:12:27,240 --> 00:12:31,400
+and for initializing an array.
+
+252
+00:12:29,680 --> 00:12:33,480
+For that, you only have to set LM to
+
+253
+00:12:31,400 --> 00:12:36,320
+zero. Okay? If we do something like
+
+254
+00:12:33,480 --> 00:12:39,480
+this, then the array is initialized. It
+
+255
+00:12:36,320 --> 00:12:41,720
+doesn't contain any element inside.
+
+256
+00:12:39,480 --> 00:12:44,160
+Okay? So, we can start adding elements
+
+257
+00:12:41,720 --> 00:12:44,160
+again.
+
+258
+00:12:45,120 --> 00:12:49,920
+Well, things to remember. Variable
+
+259
+00:12:47,520 --> 00:12:52,040
+dimension arrays are powerful, but there
+
+260
+00:12:49,920 --> 00:12:53,160
+are some important rules.
+
+261
+00:12:52,040 --> 00:12:54,880
+First,
+
+262
+00:12:53,160 --> 00:12:56,920
+they always has
+
+263
+00:12:54,880 --> 00:12:59,480
+a maximum size.
+
+264
+00:12:56,920 --> 00:13:02,160
+Okay? So, if we do if we have something
+
+265
+00:12:59,480 --> 00:13:02,160
+like this,
+
+266
+00:13:02,440 --> 00:13:07,560
+then
+
+267
+00:13:03,600 --> 00:13:11,680
+this 1,000 does not mean unlimited. It
+
+268
+00:13:07,560 --> 00:13:14,440
+means up to 1,000 elements. Okay?
+
+269
+00:13:11,680 --> 00:13:16,080
+Well, the second thing to remember is
+
+270
+00:13:14,440 --> 00:13:20,360
+that the current number of elements
+
+271
+00:13:16,080 --> 00:13:20,360
+starts at zero. Okay?
+
+272
+00:13:20,440 --> 00:13:28,880
+Third question. For loops should always
+
+273
+00:13:24,160 --> 00:13:31,280
+use LM. Okay? Instead of a fixed value.
+
+274
+00:13:28,880 --> 00:13:33,960
+If it is possible, I recommend to use
+
+275
+00:13:31,280 --> 00:13:37,200
+for each, okay?
+
+276
+00:13:33,960 --> 00:13:40,520
+And finally, uh when you don't know how
+
+277
+00:13:37,200 --> 00:13:42,640
+much how many records you'll process,
+
+278
+00:13:40,520 --> 00:13:47,040
+variable dimension arrays are often a
+
+279
+00:13:42,640 --> 00:13:49,760
+much better choice than fixed arrays.
+
+280
+00:13:47,040 --> 00:13:52,880
+Well, when should we use them? Well,
+
+281
+00:13:49,760 --> 00:13:54,960
+use fixed arrays when the size is known,
+
+282
+00:13:52,880 --> 00:13:59,000
+when the size is when the size never
+
+283
+00:13:54,960 --> 00:14:01,600
+changes, okay? For example, if we have
+
+284
+00:13:59,000 --> 00:14:04,320
+months,
+
+285
+00:14:01,600 --> 00:14:04,320
+uh
+
+286
+00:14:08,320 --> 00:14:14,240
+in this case, we'll have a fixed array.
+
+287
+00:14:11,320 --> 00:14:16,960
+It has no sense to do something like
+
+288
+00:14:14,240 --> 00:14:19,800
+this if we are going to store here only
+
+289
+00:14:16,960 --> 00:14:22,640
+12 elements, okay? In this case, we'll
+
+290
+00:14:19,800 --> 00:14:26,240
+use always a fixed number of elements.
+
+291
+00:14:22,640 --> 00:14:29,320
+This case, if we are storing day day uh
+
+292
+00:14:26,240 --> 00:14:32,240
+the days of the week, for example, okay?
+
+293
+00:14:29,320 --> 00:14:33,800
+When we have to use var arrays? Well, in
+
+294
+00:14:32,240 --> 00:14:36,320
+that case, we'll
+
+295
+00:14:33,800 --> 00:14:38,720
+uh we'll use them when we need explicit
+
+296
+00:14:36,320 --> 00:14:40,600
+control, when the number of elements
+
+297
+00:14:38,720 --> 00:14:44,120
+changes, okay?
+
+298
+00:14:40,600 --> 00:14:45,600
+And when to use auto arrays? Well,
+
+299
+00:14:44,120 --> 00:14:47,839
+uh
+
+300
+00:14:45,600 --> 00:14:49,800
+well, you'll use them when you are
+
+301
+00:14:47,839 --> 00:14:52,880
+continuously adding elements, when you
+
+302
+00:14:49,800 --> 00:14:55,880
+don't want to uh manage counters, and
+
+303
+00:14:52,880 --> 00:14:59,520
+when you are reading files, APIs, JSON
+
+304
+00:14:55,880 --> 00:15:02,640
+data. Um well, personally, when I need a
+
+305
+00:14:59,520 --> 00:15:05,960
+dynamic list of values, I almost always
+
+306
+00:15:02,640 --> 00:15:09,360
+choose auto, okay? Because uh the code
+
+307
+00:15:05,960 --> 00:15:11,920
+becomes much uh much cleaner and easier
+
+308
+00:15:09,360 --> 00:15:11,920
+to read.
+
+309
+00:15:12,240 --> 00:15:17,000
+So, in this video, we learned how RPG
+
+310
+00:15:14,440 --> 00:15:19,360
+supports variable dimension arrays. We
+
+311
+00:15:17,000 --> 00:15:22,160
+started by comparing them with
+
+312
+00:15:19,360 --> 00:15:23,120
+traditional fixed-size arrays. Then we
+
+313
+00:15:22,160 --> 00:15:25,240
+learned
+
+314
+00:15:23,120 --> 00:15:28,120
+about the two different variable
+
+315
+00:15:25,240 --> 00:15:30,160
+dimension arrays, var and auto.
+
+316
+00:15:28,120 --> 00:15:32,600
+And finally, we created practical
+
+317
+00:15:30,160 --> 00:15:35,240
+example where an array grows
+
+318
+00:15:32,600 --> 00:15:38,040
+automatically while the program runs.
+
+319
+00:15:35,240 --> 00:15:40,880
+This is one of the of those RPG feature
+
+320
+00:15:38,040 --> 00:15:43,240
+that many developers never use, but once
+
+321
+00:15:40,880 --> 00:15:45,880
+you discover it, you start finding
+
+322
+00:15:43,240 --> 00:15:49,000
+places where it can simplify your
+
+323
+00:15:45,880 --> 00:15:50,800
+programs dramatically.
+
+324
+00:15:49,000 --> 00:15:53,920
+In the next episode, we will continue
+
+325
+00:15:50,800 --> 00:15:56,360
+exploring modern RPG features and data
+
+326
+00:15:53,920 --> 00:15:58,960
+handling techniques. I hope you like the
+
+327
+00:15:56,360 --> 00:16:01,080
+video and that it was useful to you.
+
+328
+00:15:58,960 --> 00:16:03,000
+Uh remember to like and subscribe if you
+
+329
+00:16:01,080 --> 00:16:06,920
+haven't already. See you on the next
+
+330
+00:16:03,000 --> 00:16:06,920
+video and thanks for watching.
+

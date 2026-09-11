@@ -1,0 +1,1852 @@
+1
+00:00:00,720 --> 00:00:04,680
+Hello everyone, and welcome to a new IBM
+
+2
+00:00:02,560 --> 00:00:07,480
+i RPG sample video.
+
+3
+00:00:04,680 --> 00:00:10,240
+This is episode 12 of the series learn
+
+4
+00:00:07,480 --> 00:00:12,320
+RPG on IBM i with VS code.
+
+5
+00:00:10,240 --> 00:00:14,240
+In the previous videos, we've learned
+
+6
+00:00:12,320 --> 00:00:17,160
+how to declare variables, work with
+
+7
+00:00:14,240 --> 00:00:19,240
+arrays, build data structures, and write
+
+8
+00:00:17,160 --> 00:00:21,080
+more complex programs.
+
+9
+00:00:19,240 --> 00:00:22,120
+But until now, every program we've
+
+10
+00:00:21,080 --> 00:00:24,760
+written
+
+11
+00:00:22,120 --> 00:00:27,480
+has been completely independent. Real
+
+12
+00:00:24,760 --> 00:00:29,720
+applications don't work that way.
+
+13
+00:00:27,480 --> 00:00:32,279
+Programs need to communicate with each
+
+14
+00:00:29,720 --> 00:00:34,440
+other. They need to send information,
+
+15
+00:00:32,279 --> 00:00:36,480
+receive information, and sometimes
+
+16
+00:00:34,440 --> 00:00:38,400
+return results.
+
+17
+00:00:36,480 --> 00:00:40,080
+The way they do that is through
+
+18
+00:00:38,400 --> 00:00:41,920
+parameters.
+
+19
+00:00:40,080 --> 00:00:44,600
+Today, we'll learn how to declare
+
+20
+00:00:41,920 --> 00:00:46,800
+parameters, how to receive values from
+
+21
+00:00:44,600 --> 00:00:49,600
+another program, and we'll also look at
+
+22
+00:00:46,800 --> 00:00:52,200
+some very useful parameter options that
+
+23
+00:00:49,600 --> 00:00:53,880
+you'll see constantly in professional
+
+24
+00:00:52,200 --> 00:00:56,560
+RPG code.
+
+25
+00:00:53,880 --> 00:00:56,560
+So, let's go.
+
+26
+00:00:56,600 --> 00:01:01,320
+Well, what are parameters? Well, imagine
+
+27
+00:00:59,320 --> 00:01:04,120
+we have a program that prints customer
+
+28
+00:01:01,320 --> 00:01:06,640
+information. Instead of hard-coding the
+
+29
+00:01:04,120 --> 00:01:08,880
+customer number inside the program,
+
+30
+00:01:06,640 --> 00:01:11,040
+wouldn't it be better if another program
+
+31
+00:01:08,880 --> 00:01:14,040
+could simply send it?
+
+32
+00:01:11,040 --> 00:01:16,760
+That's exactly what parameters are. They
+
+33
+00:01:14,040 --> 00:01:18,080
+allow one program to pass information to
+
+34
+00:01:16,760 --> 00:01:21,400
+another.
+
+35
+00:01:18,080 --> 00:01:23,040
+Up until now, all our programs started
+
+36
+00:01:21,400 --> 00:01:25,840
+like this.
+
+37
+00:01:23,040 --> 00:01:25,840
+Let me open it.
+
+38
+00:01:26,800 --> 00:01:30,320
+Okay.
+
+39
+00:01:27,800 --> 00:01:31,840
+This is the way we are starting all our
+
+40
+00:01:30,320 --> 00:01:33,840
+programs.
+
+41
+00:01:31,840 --> 00:01:35,320
+But today, we're going to introduce a
+
+42
+00:01:33,840 --> 00:01:38,680
+new section.
+
+43
+00:01:35,320 --> 00:01:38,680
+The new section is this.
+
+44
+00:01:41,120 --> 00:01:45,480
+Well,
+
+45
+00:01:42,480 --> 00:01:47,120
+uh the PI stands for procedure
+
+46
+00:01:45,480 --> 00:01:49,440
+interface.
+
+47
+00:01:47,120 --> 00:01:53,920
+This defines the parameters that our
+
+48
+00:01:49,440 --> 00:01:53,920
+program expects to receive.
+
+49
+00:01:55,360 --> 00:02:02,360
+Well, let's build our first example.
+
+50
+00:01:58,920 --> 00:02:02,360
+Uh let me write.
+
+51
+00:02:17,880 --> 00:02:21,600
+Okay.
+
+52
+00:02:19,320 --> 00:02:24,080
+Well, this is very simple. Notice that
+
+53
+00:02:21,600 --> 00:02:27,560
+for parameters, we are using annotation
+
+54
+00:02:24,080 --> 00:02:29,520
+like this. P and the name of the uh
+
+55
+00:02:27,560 --> 00:02:32,040
+variable variable
+
+56
+00:02:29,520 --> 00:02:34,440
+uh using camel case, okay?
+
+57
+00:02:32,040 --> 00:02:37,120
+Uh this way we are we always know that a
+
+58
+00:02:34,440 --> 00:02:38,640
+variable in our is a parameter in our
+
+59
+00:02:37,120 --> 00:02:40,959
+code.
+
+60
+00:02:38,640 --> 00:02:43,520
+Well, our program expects one parameter
+
+61
+00:02:40,959 --> 00:02:47,080
+that is P customer in this case. The
+
+62
+00:02:43,520 --> 00:02:50,280
+type is uh character of 10 positions.
+
+63
+00:02:47,080 --> 00:02:52,680
+And then we are writing hello and the
+
+64
+00:02:50,280 --> 00:02:53,640
+name of the customer. It is very simple,
+
+65
+00:02:52,680 --> 00:02:56,040
+okay?
+
+66
+00:02:53,640 --> 00:02:58,080
+What if we want to uh receive more than
+
+67
+00:02:56,040 --> 00:02:59,080
+one parameter? Well,
+
+68
+00:02:58,080 --> 00:03:01,600
+receiver
+
+69
+00:02:59,080 --> 00:03:03,040
+receiving multiple uh values is just as
+
+70
+00:03:01,600 --> 00:03:06,000
+easy. Uh
+
+71
+00:03:03,040 --> 00:03:10,519
+just we only have to add um more
+
+72
+00:03:06,000 --> 00:03:10,519
+parameters here. Amount, for example.
+
+73
+00:03:11,680 --> 00:03:14,959
+And
+
+74
+00:03:12,880 --> 00:03:17,360
+city, for example.
+
+75
+00:03:14,959 --> 00:03:17,360
+Okay?
+
+76
+00:03:19,440 --> 00:03:23,680
+Well,
+
+77
+00:03:21,600 --> 00:03:26,200
+uh well, we here we have three
+
+78
+00:03:23,680 --> 00:03:28,720
+parameters with three different uh data
+
+79
+00:03:26,200 --> 00:03:30,560
+types, okay? In this case, we'll need to
+
+80
+00:03:28,720 --> 00:03:32,560
+call to this program using three
+
+81
+00:03:30,560 --> 00:03:35,200
+parameters, okay?
+
+82
+00:03:32,560 --> 00:03:38,840
+Each parameter is received in the same
+
+83
+00:03:35,200 --> 00:03:41,320
+order. The order is extremely important.
+
+84
+00:03:38,840 --> 00:03:43,800
+If we swap the parameters, the program
+
+85
+00:03:41,320 --> 00:03:46,000
+will receive incorrect values. And if
+
+86
+00:03:43,800 --> 00:03:49,200
+the values are not compatible compatible
+
+87
+00:03:46,000 --> 00:03:52,720
+with data type, it will crash, okay?
+
+88
+00:03:49,200 --> 00:03:55,320
+So, this is uh very important.
+
+89
+00:03:52,720 --> 00:03:56,480
+Well, sometimes a parameter is only used
+
+90
+00:03:55,320 --> 00:03:59,080
+for reading.
+
+91
+00:03:56,480 --> 00:04:00,640
+We don't want the called program to not
+
+92
+00:03:59,080 --> 00:04:03,520
+modify it.
+
+93
+00:04:00,640 --> 00:04:06,640
+For that, we will use const.
+
+94
+00:04:03,520 --> 00:04:08,000
+And it is written this way.
+
+95
+00:04:06,640 --> 00:04:10,840
+const
+
+96
+00:04:08,000 --> 00:04:12,720
+Okay? And it is written here after the
+
+97
+00:04:10,840 --> 00:04:15,640
+type.
+
+98
+00:04:12,720 --> 00:04:17,359
+const tell RPG that this parameter is
+
+99
+00:04:15,640 --> 00:04:19,400
+read-only.
+
+100
+00:04:17,359 --> 00:04:22,080
+Or uh you only
+
+101
+00:04:19,400 --> 00:04:24,160
+uh you also can say that it is an input
+
+102
+00:04:22,080 --> 00:04:27,400
+parameter, okay?
+
+103
+00:04:24,160 --> 00:04:30,560
+Inside our program, we can display it as
+
+104
+00:04:27,400 --> 00:04:33,560
+as in this example. But, we cannot do
+
+105
+00:04:30,560 --> 00:04:33,560
+something like this.
+
+106
+00:04:35,680 --> 00:04:38,040
+Okay?
+
+107
+00:04:36,600 --> 00:04:40,440
+If we do this,
+
+108
+00:04:38,040 --> 00:04:42,080
+then the compiler will immediately
+
+109
+00:04:40,440 --> 00:04:44,320
+generate an error.
+
+110
+00:04:42,080 --> 00:04:47,000
+Using const is considered a good
+
+111
+00:04:44,320 --> 00:04:49,360
+practice whenever your procedure only
+
+112
+00:04:47,000 --> 00:04:51,520
+needs to read the parameter.
+
+113
+00:04:49,360 --> 00:04:53,640
+This is especially useful for for
+
+114
+00:04:51,520 --> 00:04:56,960
+character strings, large data
+
+115
+00:04:53,640 --> 00:04:59,880
+structures, or arrays because RPG can
+
+116
+00:04:56,960 --> 00:05:02,680
+pass them efficiently without creating
+
+117
+00:04:59,880 --> 00:05:06,640
+unnecessary copies. We'll talk about all
+
+118
+00:05:02,680 --> 00:05:06,640
+these in future videos, okay?
+
+119
+00:05:07,040 --> 00:05:10,880
+Well, sometimes a parameter is possible
+
+120
+00:05:09,400 --> 00:05:14,360
+that is optional.
+
+121
+00:05:10,880 --> 00:05:15,480
+The caller uh may pass it or may decide
+
+122
+00:05:14,360 --> 00:05:18,480
+not to.
+
+123
+00:05:15,480 --> 00:05:20,560
+For that, we use options
+
+124
+00:05:18,480 --> 00:05:22,520
+uh no pass this way.
+
+125
+00:05:20,560 --> 00:05:26,640
+For example, we can write
+
+126
+00:05:22,520 --> 00:05:26,640
+this other uh parameter, CD.
+
+127
+00:05:28,600 --> 00:05:33,680
+Also const and options
+
+128
+00:05:31,240 --> 00:05:34,560
+no pass.
+
+129
+00:05:33,680 --> 00:05:37,240
+Well,
+
+130
+00:05:34,560 --> 00:05:38,600
+now the second parameter here becomes
+
+131
+00:05:37,240 --> 00:05:40,280
+optional.
+
+132
+00:05:38,600 --> 00:05:43,600
+It is important to say that if a
+
+133
+00:05:40,280 --> 00:05:46,680
+parameter is optional using no pass, as
+
+134
+00:05:43,600 --> 00:05:49,840
+in this case, then the the of parameters
+
+135
+00:05:46,680 --> 00:05:51,680
+must uh be also optional. We cannot add
+
+136
+00:05:49,840 --> 00:05:53,240
+a new parameter
+
+137
+00:05:51,680 --> 00:05:54,600
+here
+
+138
+00:05:53,240 --> 00:05:55,560
+this way
+
+139
+00:05:54,600 --> 00:05:56,520
+and
+
+140
+00:05:55,560 --> 00:06:00,000
+and do
+
+141
+00:05:56,520 --> 00:06:04,080
+do it. Okay, we we will get a
+
+142
+00:06:00,000 --> 00:06:04,080
+compilation error in this case. Okay?
+
+143
+00:06:05,600 --> 00:06:11,880
+Okay, but how do we know if the program
+
+144
+00:06:08,760 --> 00:06:14,000
+has received the optional parameter?
+
+145
+00:06:11,880 --> 00:06:16,880
+Well, for that we
+
+146
+00:06:14,000 --> 00:06:20,120
+we have two different options. Okay?
+
+147
+00:06:16,880 --> 00:06:22,280
+So, for that we can use params
+
+148
+00:06:20,120 --> 00:06:24,880
+this way.
+
+149
+00:06:22,280 --> 00:06:24,880
+params
+
+150
+00:06:26,120 --> 00:06:29,520
+that is returning the number of
+
+151
+00:06:27,800 --> 00:06:31,840
+parameters received. For example, in
+
+152
+00:06:29,520 --> 00:06:34,520
+this case we can say if params is more
+
+153
+00:06:31,840 --> 00:06:34,520
+than one
+
+154
+00:06:35,520 --> 00:06:38,200
+then
+
+155
+00:06:37,000 --> 00:06:40,720
+we can
+
+156
+00:06:38,200 --> 00:06:40,720
+send
+
+157
+00:06:41,080 --> 00:06:45,400
+the customer lives in
+
+158
+00:06:43,640 --> 00:06:49,320
+for example.
+
+159
+00:06:45,400 --> 00:06:51,000
+Okay, we can move this here from
+
+160
+00:06:49,320 --> 00:06:53,280
+here.
+
+161
+00:06:51,000 --> 00:06:55,800
+Okay, we can do this.
+
+162
+00:06:53,280 --> 00:06:58,600
+Or the other option, that is my favorite
+
+163
+00:06:55,800 --> 00:07:00,919
+option, is using past.
+
+164
+00:06:58,600 --> 00:07:02,919
+In this case, with past we can ask if a
+
+165
+00:07:00,919 --> 00:07:04,720
+parameter has been received
+
+166
+00:07:02,919 --> 00:07:06,160
+or not directly.
+
+167
+00:07:04,720 --> 00:07:08,600
+For example, in this case we can do
+
+168
+00:07:06,160 --> 00:07:09,919
+something like this if
+
+169
+00:07:08,600 --> 00:07:11,600
+past
+
+170
+00:07:09,919 --> 00:07:13,040
+city
+
+171
+00:07:11,600 --> 00:07:14,880
+P city
+
+172
+00:07:13,040 --> 00:07:18,080
+then
+
+173
+00:07:14,880 --> 00:07:20,960
+we will send this message to the job
+
+174
+00:07:18,080 --> 00:07:20,960
+log. Okay?
+
+175
+00:07:21,280 --> 00:07:24,400
+Of course, if not
+
+176
+00:07:26,280 --> 00:07:33,320
+Well, if not we can do whatever
+
+177
+00:07:29,880 --> 00:07:35,280
+whatever we we need. Okay?
+
+178
+00:07:33,320 --> 00:07:39,080
+This is a very common technique in
+
+179
+00:07:35,280 --> 00:07:39,080
+professional RPG programs.
+
+180
+00:07:39,440 --> 00:07:43,720
+Well, there is another way to make
+
+181
+00:07:41,200 --> 00:07:45,880
+parameters optional. instead of not
+
+182
+00:07:43,720 --> 00:07:49,120
+passing the parameter, we
+
+183
+00:07:45,880 --> 00:07:51,120
+can pass a special value called omit.
+
+184
+00:07:49,120 --> 00:07:54,000
+For that, our parameter must be declared
+
+185
+00:07:51,120 --> 00:07:55,280
+as option omit this way. For example, we
+
+186
+00:07:54,000 --> 00:07:57,040
+can
+
+187
+00:07:55,280 --> 00:08:00,720
+imagine we
+
+188
+00:07:57,040 --> 00:08:04,800
+can omit this parameter.
+
+189
+00:08:00,720 --> 00:08:04,800
+But, the age
+
+190
+00:08:08,400 --> 00:08:12,200
+is obligatory, okay?
+
+191
+00:08:12,760 --> 00:08:16,919
+Well, in this case,
+
+192
+00:08:14,640 --> 00:08:18,760
+we can omit the city, for example. This
+
+193
+00:08:16,919 --> 00:08:21,320
+way, we can
+
+194
+00:08:18,760 --> 00:08:24,320
+Well, in this case, we can use
+
+195
+00:08:21,320 --> 00:08:27,640
+omitted to know if this parameter has
+
+196
+00:08:24,320 --> 00:08:28,760
+been passed or not. For example,
+
+197
+00:08:27,640 --> 00:08:32,160
+we can say
+
+198
+00:08:28,760 --> 00:08:32,160
+right here if
+
+199
+00:08:39,479 --> 00:08:44,800
+this
+
+200
+00:08:41,919 --> 00:08:44,800
+and then write
+
+201
+00:08:57,560 --> 00:09:00,600
+this way.
+
+202
+00:08:59,520 --> 00:09:03,000
+Okay?
+
+203
+00:09:00,600 --> 00:09:04,600
+And this program then, if we call to
+
+204
+00:09:03,000 --> 00:09:06,480
+this program with the first parameter,
+
+205
+00:09:04,600 --> 00:09:08,040
+that is obligatory, and the second
+
+206
+00:09:06,480 --> 00:09:11,280
+parameter can be
+
+207
+00:09:08,040 --> 00:09:13,760
+a call with an omit with this We can
+
+208
+00:09:11,280 --> 00:09:16,880
+write this in the call, okay?
+
+209
+00:09:13,760 --> 00:09:19,920
+And the age is obligatory. So, we are
+
+210
+00:09:16,880 --> 00:09:21,000
+checking here all these things and write
+
+211
+00:09:19,920 --> 00:09:24,240
+the
+
+212
+00:09:21,000 --> 00:09:27,720
+the city if it is not omitted.
+
+213
+00:09:24,240 --> 00:09:29,800
+And the age is written in all the cases.
+
+214
+00:09:27,720 --> 00:09:32,360
+We'll see in the next videos how useful
+
+215
+00:09:29,800 --> 00:09:34,480
+is using omit in some cases.
+
+216
+00:09:32,360 --> 00:09:37,800
+But, notice the difference. With no
+
+217
+00:09:34,480 --> 00:09:40,520
+pass, the parameter simply wasn't sent.
+
+218
+00:09:37,800 --> 00:09:43,680
+Okay, past will return false.
+
+219
+00:09:40,520 --> 00:09:45,520
+With omit, the parameter exists. So, if
+
+220
+00:09:43,680 --> 00:09:47,840
+you use past,
+
+221
+00:09:45,520 --> 00:09:50,160
+uh then it will return true.
+
+222
+00:09:47,840 --> 00:09:52,960
+In these cases, uh you'll need to use
+
+223
+00:09:50,160 --> 00:09:54,440
+omitted to check if the parameter is
+
+224
+00:09:52,960 --> 00:09:56,440
+omit or not.
+
+225
+00:09:54,440 --> 00:09:58,720
+Okay, uh these are two different
+
+226
+00:09:56,440 --> 00:10:01,080
+concepts.
+
+227
+00:09:58,720 --> 00:10:03,160
+Okay, now let me create a new program, a
+
+228
+00:10:01,080 --> 00:10:05,240
+very simple, that will work with two
+
+229
+00:10:03,160 --> 00:10:06,040
+possible parameters. Okay, let me write
+
+230
+00:10:05,240 --> 00:10:09,440
+it.
+
+231
+00:10:06,040 --> 00:10:11,480
+Uh we're going to have customer uh name.
+
+232
+00:10:09,440 --> 00:10:12,640
+Okay, let let me write it. Customer
+
+233
+00:10:11,480 --> 00:10:13,880
+name.
+
+234
+00:10:12,640 --> 00:10:16,280
+This way.
+
+235
+00:10:13,880 --> 00:10:19,640
+Camel case, remember.
+
+236
+00:10:16,280 --> 00:10:19,640
+Then customer age.
+
+237
+00:10:21,440 --> 00:10:27,560
+Let me write it in this type.
+
+238
+00:10:23,560 --> 00:10:27,560
+This is very sim- more simple.
+
+239
+00:10:28,800 --> 00:10:35,960
+Then let me remove this, and
+
+240
+00:10:32,560 --> 00:10:38,080
+let me add here options. No pass to this
+
+241
+00:10:35,960 --> 00:10:40,920
+parameter. Okay?
+
+242
+00:10:38,080 --> 00:10:42,000
+And the program will
+
+243
+00:10:40,920 --> 00:10:46,720
+write
+
+244
+00:10:42,000 --> 00:10:49,080
+the customer name is plus per P customer
+
+245
+00:10:46,720 --> 00:10:51,760
+name.
+
+246
+00:10:49,080 --> 00:10:54,680
+And if past
+
+247
+00:10:51,760 --> 00:10:57,120
+P customer age,
+
+248
+00:10:54,680 --> 00:10:57,120
+then
+
+249
+00:10:57,600 --> 00:11:01,600
+we'll send the message
+
+250
+00:11:01,920 --> 00:11:08,040
+with
+
+251
+00:11:04,240 --> 00:11:08,040
+and the customer age
+
+252
+00:11:10,800 --> 00:11:16,200
+for example. Okay?
+
+253
+00:11:13,520 --> 00:11:18,360
+Very simple program. Okay?
+
+254
+00:11:16,200 --> 00:11:20,280
+As you can see, we have uh these two
+
+255
+00:11:18,360 --> 00:11:22,440
+parameters. The first is obligatory
+
+256
+00:11:20,280 --> 00:11:25,600
+parameter, and it must be passed by
+
+257
+00:11:22,440 --> 00:11:28,240
+reference because we are not using here
+
+258
+00:11:25,600 --> 00:11:30,560
+the const keyword. Okay?
+
+259
+00:11:28,240 --> 00:11:32,880
+We'll see it later how it works.
+
+260
+00:11:30,560 --> 00:11:34,920
+Well, now let's create a new different
+
+261
+00:11:32,880 --> 00:11:37,200
+program that we'll call to this one
+
+262
+00:11:34,920 --> 00:11:39,240
+using parameters. Of course, you'll see
+
+263
+00:11:37,200 --> 00:11:41,720
+that if your program does not have
+
+264
+00:11:39,240 --> 00:11:44,320
+parameters, the call is identical, just
+
+265
+00:11:41,720 --> 00:11:48,080
+sending no parameters, okay?
+
+266
+00:11:44,320 --> 00:11:50,200
+Well, let me write uh the other program
+
+267
+00:11:48,080 --> 00:11:52,040
+with the same structure.
+
+268
+00:11:50,200 --> 00:11:55,240
+For example,
+
+269
+00:11:52,040 --> 00:11:57,840
+let me copy this program to another one.
+
+270
+00:11:55,240 --> 00:11:57,840
+Copy.
+
+271
+00:11:58,880 --> 00:12:01,280
+Okay.
+
+272
+00:12:01,520 --> 00:12:04,440
+Let me open it.
+
+273
+00:12:05,120 --> 00:12:08,600
+And
+
+274
+00:12:07,240 --> 00:12:11,760
+we're going to have a
+
+275
+00:12:08,600 --> 00:12:13,680
+structure similar structure, okay?
+
+276
+00:12:11,760 --> 00:12:15,800
+But in this case, we are going to
+
+277
+00:12:13,680 --> 00:12:18,320
+declare
+
+278
+00:12:15,800 --> 00:12:18,320
+this.
+
+279
+00:12:24,520 --> 00:12:28,000
+I'm going to explain it later.
+
+280
+00:13:21,280 --> 00:13:23,760
+Okay.
+
+281
+00:13:24,800 --> 00:13:30,000
+Well, very simple, too.
+
+282
+00:13:27,680 --> 00:13:31,920
+Well, as you see, uh this is the way
+
+283
+00:13:30,000 --> 00:13:36,360
+we're going to declare an external
+
+284
+00:13:31,920 --> 00:13:38,440
+program in our program using this DCLPR.
+
+285
+00:13:36,360 --> 00:13:41,360
+Okay? Then we are writing that is an
+
+286
+00:13:38,440 --> 00:13:43,960
+external external program, the library,
+
+287
+00:13:41,360 --> 00:13:46,120
+the object name. And in this case, uh in
+
+288
+00:13:43,960 --> 00:13:48,680
+this case, the program is uh PARMS1. I'm
+
+289
+00:13:46,120 --> 00:13:51,520
+going uh I'm going to to call to this uh
+
+290
+00:13:48,680 --> 00:13:52,320
+program to PARMS1. And then
+
+291
+00:13:51,520 --> 00:13:53,760
+uh
+
+292
+00:13:52,320 --> 00:13:56,400
+they uh
+
+293
+00:13:53,760 --> 00:13:58,200
+different possible parameters. Okay? As
+
+294
+00:13:56,400 --> 00:14:00,000
+you see in the declaration, we are not
+
+295
+00:13:58,200 --> 00:14:02,560
+using name.
+
+296
+00:14:00,000 --> 00:14:04,760
+We are not using a name. We are using an
+
+297
+00:14:02,560 --> 00:14:06,880
+a store and an N.
+
+298
+00:14:04,760 --> 00:14:09,120
+That means no name, okay? You don't need
+
+299
+00:14:06,880 --> 00:14:10,360
+to add here a name for the parameter.
+
+300
+00:14:09,120 --> 00:14:12,400
+Okay?
+
+301
+00:14:10,360 --> 00:14:14,880
+Later, we are declaring a variable, as
+
+302
+00:14:12,400 --> 00:14:17,800
+you can see here, this customer name.
+
+303
+00:14:14,880 --> 00:14:20,320
+Uh that will use as the first parameter.
+
+304
+00:14:17,800 --> 00:14:23,440
+Remember that it is uh if it is not
+
+305
+00:14:20,320 --> 00:14:25,760
+declared as const, in as in this case,
+
+306
+00:14:23,440 --> 00:14:26,760
+it must be sent using an a variable.
+
+307
+00:14:25,760 --> 00:14:29,640
+Okay?
+
+308
+00:14:26,760 --> 00:14:32,120
+And we are assigning the value uh a
+
+309
+00:14:29,640 --> 00:14:34,839
+value to our variable here and here,
+
+310
+00:14:32,120 --> 00:14:37,040
+too. And then we are calling to program
+
+311
+00:14:34,839 --> 00:14:38,920
+two times, the first time with only one
+
+312
+00:14:37,040 --> 00:14:41,120
+parameters, and the second time with two
+
+313
+00:14:38,920 --> 00:14:43,760
+parameters. As you can see, the second
+
+314
+00:14:41,120 --> 00:14:45,240
+parameter, as it is const, we can uh
+
+315
+00:14:43,760 --> 00:14:48,839
+send it this way.
+
+316
+00:14:45,240 --> 00:14:51,400
+And as it is optional, we can uh call uh
+
+317
+00:14:48,839 --> 00:14:54,360
+with one parameter and with uh two
+
+318
+00:14:51,400 --> 00:14:55,520
+parameters in this case. Okay?
+
+319
+00:14:54,360 --> 00:14:57,480
+Well,
+
+320
+00:14:55,520 --> 00:15:01,000
+let's uh let's see if if the programs
+
+321
+00:14:57,480 --> 00:15:03,320
+work. Let me compile the first one.
+
+322
+00:15:01,000 --> 00:15:04,600
+PARMS uh one. Okay, it is compiled
+
+323
+00:15:03,320 --> 00:15:08,520
+correctly.
+
+324
+00:15:04,600 --> 00:15:10,960
+And let me compile the second one.
+
+325
+00:15:08,520 --> 00:15:13,960
+That is also compiled correctly. And
+
+326
+00:15:10,960 --> 00:15:17,560
+then we are going to run the second one.
+
+327
+00:15:13,960 --> 00:15:20,040
+So, we are going to open the
+
+328
+00:15:17,560 --> 00:15:21,240
+this filter that I have uh
+
+329
+00:15:20,040 --> 00:15:24,680
+prepared.
+
+330
+00:15:21,240 --> 00:15:27,640
+As you can see, we can set here that we
+
+331
+00:15:24,680 --> 00:15:30,480
+want to see all the objects named param
+
+332
+00:15:27,640 --> 00:15:33,040
+asterisk. And when and then we are going
+
+333
+00:15:30,480 --> 00:15:35,000
+to get all the parameters that start
+
+334
+00:15:33,040 --> 00:15:36,800
+with params. The
+
+335
+00:15:35,000 --> 00:15:38,120
+these two one
+
+336
+00:15:36,800 --> 00:15:41,560
+both of them.
+
+337
+00:15:38,120 --> 00:15:42,960
+And then we can run it. Run action, call
+
+338
+00:15:41,560 --> 00:15:45,120
+program.
+
+339
+00:15:42,960 --> 00:15:47,680
+And as you see,
+
+340
+00:15:45,120 --> 00:15:50,520
+in the first execution, the customer
+
+341
+00:15:47,680 --> 00:15:52,280
+name is John. That's correct. And in the
+
+342
+00:15:50,520 --> 00:15:56,480
+second execution, the customer name is
+
+343
+00:15:52,280 --> 00:15:59,320
+Mary and the customer is 28. Why it is
+
+344
+00:15:56,480 --> 00:16:00,960
+bringing this? Well, because we have in
+
+345
+00:15:59,320 --> 00:16:02,960
+this case
+
+346
+00:16:00,960 --> 00:16:05,440
+two different parameters. And if the
+
+347
+00:16:02,960 --> 00:16:07,800
+second parameter this is passed, then we
+
+348
+00:16:05,440 --> 00:16:10,520
+are writing this second message to the
+
+349
+00:16:07,800 --> 00:16:12,320
+job log. Okay? So, it is working
+
+350
+00:16:10,520 --> 00:16:14,840
+correctly.
+
+351
+00:16:12,320 --> 00:16:17,480
+How about adding const to our first
+
+352
+00:16:14,840 --> 00:16:19,840
+parameter? Because inside the first
+
+353
+00:16:17,480 --> 00:16:22,280
+program, it is not changed, so it is not
+
+354
+00:16:19,840 --> 00:16:23,280
+necessary to send it by reference. So,
+
+355
+00:16:22,280 --> 00:16:26,120
+we can
+
+356
+00:16:23,280 --> 00:16:28,120
+add here const. Okay, it is an input
+
+357
+00:16:26,120 --> 00:16:29,560
+parameter. Okay?
+
+358
+00:16:28,120 --> 00:16:33,160
+So, we can
+
+359
+00:16:29,560 --> 00:16:33,160
+compile it this way.
+
+360
+00:16:33,600 --> 00:16:38,160
+As you can see,
+
+361
+00:16:35,640 --> 00:16:41,200
+correct.
+
+362
+00:16:38,160 --> 00:16:42,560
+And then we can add here
+
+363
+00:16:41,200 --> 00:16:44,760
+const.
+
+364
+00:16:42,560 --> 00:16:46,680
+We can remove this
+
+365
+00:16:44,760 --> 00:16:47,760
+this variable. We we are not going to
+
+366
+00:16:46,680 --> 00:16:49,320
+need it.
+
+367
+00:16:47,760 --> 00:16:52,160
+And we can
+
+368
+00:16:49,320 --> 00:16:53,400
+write here directly
+
+369
+00:16:52,160 --> 00:16:56,680
+John.
+
+370
+00:16:53,400 --> 00:16:57,760
+Remove this. Remove this. And
+
+371
+00:16:56,680 --> 00:17:02,040
+uh sorry.
+
+372
+00:16:57,760 --> 00:17:04,600
+Remove this and then write here Mary.
+
+373
+00:17:02,040 --> 00:17:07,520
+Okay? Then the program is
+
+374
+00:17:04,600 --> 00:17:10,280
+more readable, more simple, and it works
+
+375
+00:17:07,520 --> 00:17:10,280
+in the same way.
+
+376
+00:17:11,720 --> 00:17:15,720
+We can see
+
+377
+00:17:13,199 --> 00:17:18,640
+we can run it again.
+
+378
+00:17:15,720 --> 00:17:20,800
+Run action, call program.
+
+379
+00:17:18,640 --> 00:17:23,000
+And we are getting the same.
+
+380
+00:17:20,800 --> 00:17:26,360
+The customer name is John, the customer
+
+381
+00:17:23,000 --> 00:17:29,360
+name is Mary, and the customer is 28.
+
+382
+00:17:26,360 --> 00:17:30,560
+So, it works correctly as in the other
+
+383
+00:17:29,360 --> 00:17:31,800
+way.
+
+384
+00:17:30,560 --> 00:17:33,320
+Okay?
+
+385
+00:17:31,800 --> 00:17:35,000
+Well,
+
+386
+00:17:33,320 --> 00:17:37,360
+I must say that
+
+387
+00:17:35,000 --> 00:17:39,080
+well, the programs are not completely
+
+388
+00:17:37,360 --> 00:17:40,880
+correct because we are not using
+
+389
+00:17:39,080 --> 00:17:42,800
+correctly the activation groups. As you
+
+390
+00:17:40,880 --> 00:17:44,240
+can see here, we have the activation
+
+391
+00:17:42,800 --> 00:17:46,480
+group new
+
+392
+00:17:44,240 --> 00:17:48,960
+and also in the program number one, we
+
+393
+00:17:46,480 --> 00:17:51,360
+have activation group new. And this is
+
+394
+00:17:48,960 --> 00:17:54,120
+not correct. But at this moment, it's
+
+395
+00:17:51,360 --> 00:17:55,960
+not important. We'll talk about ID and
+
+396
+00:17:54,120 --> 00:17:58,600
+activation groups in the future videos,
+
+397
+00:17:55,960 --> 00:18:00,520
+okay? So, it doesn't matter.
+
+398
+00:17:58,600 --> 00:18:03,080
+You can
+
+399
+00:18:00,520 --> 00:18:06,240
+test these programs this way and it will
+
+400
+00:18:03,080 --> 00:18:06,240
+run correctly.
+
+401
+00:18:06,760 --> 00:18:10,560
+Well, before finishing,
+
+402
+00:18:08,600 --> 00:18:13,640
+here
+
+403
+00:18:10,560 --> 00:18:16,280
+here are a few recommendations, okay?
+
+404
+00:18:13,640 --> 00:18:18,640
+When to use const? Well, we are going to
+
+405
+00:18:16,280 --> 00:18:20,920
+use const whenever the parameter is only
+
+406
+00:18:18,640 --> 00:18:23,000
+read. This is a very good practice and
+
+407
+00:18:20,920 --> 00:18:25,120
+we'll use it also when calling
+
+408
+00:18:23,000 --> 00:18:26,680
+procedures. We'll see it in the next
+
+409
+00:18:25,120 --> 00:18:29,640
+video.
+
+410
+00:18:26,680 --> 00:18:32,280
+When to use options no pass? Well,
+
+411
+00:18:29,640 --> 00:18:34,520
+we will use it when the caller may or
+
+412
+00:18:32,280 --> 00:18:36,680
+may not provide the parameter.
+
+413
+00:18:34,520 --> 00:18:37,920
+It's very useful when you have a program
+
+414
+00:18:36,680 --> 00:18:40,560
+that has
+
+415
+00:18:37,920 --> 00:18:43,240
+two, three parameters and imagine that
+
+416
+00:18:40,560 --> 00:18:45,280
+the program is called by thousands of of
+
+417
+00:18:43,240 --> 00:18:47,840
+different programs or hundreds of
+
+418
+00:18:45,280 --> 00:18:50,760
+different programs. If you don't
+
+419
+00:18:47,840 --> 00:18:53,320
+want to change all those calls, you only
+
+420
+00:18:50,760 --> 00:18:54,760
+have to add a new parameters with
+
+421
+00:18:53,320 --> 00:18:57,640
+options no pass
+
+422
+00:18:54,760 --> 00:19:01,240
+and all the calls will
+
+423
+00:18:57,640 --> 00:19:03,480
+work in the same way. Okay?
+
+424
+00:19:01,240 --> 00:19:04,720
+When to use pass? Well, we are going to
+
+425
+00:19:03,480 --> 00:19:07,160
+use pass
+
+426
+00:19:04,720 --> 00:19:08,160
+before accessing an optional parameter,
+
+427
+00:19:07,160 --> 00:19:10,680
+okay?
+
+428
+00:19:08,160 --> 00:19:12,880
+So, if we have as in this uh,
+
+429
+00:19:10,680 --> 00:19:15,880
+as in this uh, example, if we have a
+
+430
+00:19:12,880 --> 00:19:17,600
+parameter, in this case, P_CustomerAge,
+
+431
+00:19:15,880 --> 00:19:19,600
+and it is optional,
+
+432
+00:19:17,600 --> 00:19:22,040
+the way,
+
+433
+00:19:19,600 --> 00:19:24,520
+the best way for, uh,
+
+434
+00:19:22,040 --> 00:19:27,000
+working with it is first
+
+435
+00:19:24,520 --> 00:19:30,120
+checking if it is passed.
+
+436
+00:19:27,000 --> 00:19:32,680
+Okay? Because if it is not, if it is not
+
+437
+00:19:30,120 --> 00:19:33,760
+passed, and we are, uh, writing this
+
+438
+00:19:32,680 --> 00:19:36,400
+directly,
+
+439
+00:19:33,760 --> 00:19:39,480
+we will get a crash. Well, when to use
+
+440
+00:19:36,400 --> 00:19:41,960
+options omit? Well, you'll use option
+
+441
+00:19:39,480 --> 00:19:42,600
+omit when you want to the caller
+
+442
+00:19:41,960 --> 00:19:45,440
+uh,
+
+443
+00:19:42,600 --> 00:19:48,440
+to explicitly, explicitly indicate that
+
+444
+00:19:45,440 --> 00:19:50,760
+the parameter has been omitted. Okay?
+
+445
+00:19:48,440 --> 00:19:53,120
+Following all these simple rules will
+
+446
+00:19:50,760 --> 00:19:57,200
+make your programs much more flexible
+
+447
+00:19:53,120 --> 00:19:57,200
+and easier to reuse.
+
+448
+00:19:57,680 --> 00:20:02,600
+Well, so we in this video we learned how
+
+449
+00:19:59,760 --> 00:20:04,800
+RPG programs receive information using
+
+450
+00:20:02,600 --> 00:20:07,600
+parameters, how to declare them with
+
+451
+00:20:04,800 --> 00:20:10,160
+DCL-PI, and how to make our programs
+
+452
+00:20:07,600 --> 00:20:13,160
+more flexible using const, option no
+
+453
+00:20:10,160 --> 00:20:15,000
+pass, options omit.
+
+454
+00:20:13,160 --> 00:20:17,560
+In the next video, we'll start working
+
+455
+00:20:15,000 --> 00:20:19,880
+with procedures, and using parameters is
+
+456
+00:20:17,560 --> 00:20:21,760
+one of the important things for using
+
+457
+00:20:19,880 --> 00:20:25,000
+procedures, and that's,
+
+458
+00:20:21,760 --> 00:20:26,520
+uh, why we have talked about them today.
+
+459
+00:20:25,000 --> 00:20:28,720
+I hope you liked the video and that it
+
+460
+00:20:26,520 --> 00:20:30,360
+was useful to you. As always, remember
+
+461
+00:20:28,720 --> 00:20:32,240
+to like and subscribe if you haven't
+
+462
+00:20:30,360 --> 00:20:35,120
+already. See you on the next video and
+
+463
+00:20:32,240 --> 00:20:35,120
+thanks for watching.
+
