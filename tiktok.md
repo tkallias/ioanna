@@ -203,6 +203,14 @@ https://podcasts.apple.com/cy/podcast/%CE%BF-%CE%B3%CE%B9%CF%8E%CF%81%CE%B3%CE%B
 https://www.ibm.com/docs/en/cafz/1.1.0
 
 
+aliki:
+
+https://pbs.twimg.com/media/E6m0S_JXIAQ1ltt?format=jpg&name=900x900
+
+
+
+
+
 
 
 
