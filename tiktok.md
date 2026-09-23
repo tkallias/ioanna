@@ -207,35 +207,16 @@ aliki:
 
 https://pbs.twimg.com/media/E6m0S_JXIAQ1ltt?format=jpg&name=900x900
 
-
-Μεσσηνιακές καλημέρες,
-
-Τρύγος. 
-Στο βάθος η Ιθώμη.
-
-https://pbs.twimg.com/media/HS0zQ01XAAAkDsf?format=jpg&name=large
-
-(ή, πού θα έπρεπε να ήμασταν)
+// END
 
 
+Κάποτε τα έδειναν κατώ από το τραπέζι σε διατητές, παράγοντες, και άλλους περίεργους,
 
+τώρα τα δίνουν πάνω από το τραπέζι, x10...
 
+Μπανανία
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+https://pbs.twimg.com/media/HS4jXDxWcAAsxJD?format=jpg&name=large
 
 
 
