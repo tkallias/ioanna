@@ -212,16 +212,10 @@ https://pbs.twimg.com/media/E6m0S_JXIAQ1ltt?format=jpg&name=900x900
 
 
 
+https://www.eticketing.co.uk/chelseafc/EDP/Event/Index/683
 
 
 
-Θανάση καλημέρα,
 
-Εύχομαι να είσαι καλά.
 
-Ενδιαφέρομαι για την θέση του COBOL Developer.
-
-Θα μπορούσες λίγο να μιλήσουμε;
-
-Θοδωρής Καλλίας
 
