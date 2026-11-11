@@ -222,6 +222,30 @@ https://pbs.twimg.com/media/HUWPRFXWQAAbgQd?format=jpg&name=large
 https://pbs.twimg.com/media/HUutHTcXQAALSJ1?format=jpg&name=large
 
 
+//NEWNEWNEW
+
+STRTCPSVR *SSHD
+ENDTCPSVR *SSHD
+
+DSPPGMREF PGM(MYLIB/*ALL)        
+          OUTPUT(*OUTFILE)       
+          OBJTYPE(*ALL)          
+          OUTFILE(MYLIB/MYLIBREF)
+
+          OUTMBR(*FIRST *ADD)     
+
+SELECT * FROM KALLIAS.PGMREF
+WHERE WHFNAM = 'LLDCA'
+  AND WHFUSG <> 1
+ORDER BY WHLIB, WHPNAM;
+
+
+
+
+
+
+
+
 
 
 
